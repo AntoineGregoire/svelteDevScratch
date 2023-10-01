@@ -1,13 +1,13 @@
 <script>
 	import { page } from '$app/stores';
-	import logo from '$lib/images/svelte-logo.svg';
-	import github from '$lib/images/github.svg';
+	import logo from '$lib/images/lac-sa.png';
+	import sappihre from '$lib/images/sapphire-logo.png';
 </script>
 
 <header>
 	<div class="corner">
-		<a href="https://kit.svelte.dev">
-			<img src={logo} alt="SvelteKit" />
+		<a href="https://www.campinglacsa.com/">
+			<img src={logo} alt="Camping Lac St-Augustin" />
 		</a>
 	</div>
 
@@ -31,9 +31,9 @@
 		</svg>
 	</nav>
 
-	<div class="corner">
-		<a href="https://github.com/sveltejs/kit">
-			<img src={github} alt="GitHub" />
+	<div class="corner2">
+		<a href="https://www.sapphiredesign.io/">
+			<img src={sappihre} alt="Sapphire Design" />
 		</a>
 	</div>
 </header>
@@ -45,8 +45,8 @@
 	}
 
 	.corner {
-		width: 3em;
-		height: 3em;
+		width: 6em;
+		height: 5em;
 	}
 
 	.corner a {
@@ -58,15 +58,35 @@
 	}
 
 	.corner img {
-		width: 2em;
-		height: 2em;
+		width: 5em;
+		height: 5em;
+		object-fit: contain;
+	}
+
+	.corner2 {
+		width: 4em;
+		height: 4em;
+	}
+
+	.corner2 a {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 100%;
+		height: 100%;
+	}
+
+	.corner2 img {
+		width: 3em;
+		height: 3em;
 		object-fit: contain;
 	}
 
 	nav {
 		display: flex;
 		justify-content: center;
-		--background: rgba(255, 255, 255, 0.7);
+		--background: rgba(29, 48, 75, 0.85);
+		--color-text: rgba(255, 255, 255, 0.9);
 	}
 
 	svg {
@@ -100,6 +120,7 @@
 	li[aria-current='page']::before {
 		--size: 6px;
 		content: '';
+		/* margin-top: 4; */
 		width: 0;
 		height: 0;
 		position: absolute;
