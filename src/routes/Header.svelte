@@ -120,24 +120,23 @@
 	li[aria-current='page']::before {
 		--size: 6px;
 		content: '';
-		/* margin-top: 4; */
 		width: 0;
 		height: 0;
 		position: absolute;
 		top: 0;
 		left: calc(50% - var(--size));
 		border: var(--size) solid transparent;
-		border-top: var(--size) solid var(--color-theme-1);
+		border-top: var(--size) solid var(--color-theme-2);
 		view-transition-name: indicator;
 	}
 
 	nav a {
-		display: flex;
+		display:flex;
 		height: 100%;
 		align-items: center;
 		padding: 0 0.5rem;
 		color: var(--color-text);
-		font-weight: 700;
+		font-weight: 900;
 		font-size: 0.8rem;
 		text-transform: uppercase;
 		letter-spacing: 0.1em;
@@ -146,6 +145,7 @@
 	}
 
 	a:hover {
-		color: var(--color-theme-1);
+		color: var(--color-theme-2);
+
 	}
 </style>

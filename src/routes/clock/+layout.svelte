@@ -7,8 +7,7 @@
                     <h4>Employés Actifs</h4>
                 </li>
                 <li>
-                        <span>Martin Gregoire</span>
-                     
+                    <a href="/clock/two">Martin Gregoire</a> 
                 </li>
                 <li>
                     <a href="/clock/two">Eric Sinapoli</a>
@@ -17,7 +16,7 @@
                     <a href="/clock/three">Tatiana Azimova</a>
                 </li>
                 <li>
-                    Autres Employés
+                    <h4>Autres Employés</h4>
                 </li>
                 <li>
                     <a href="/clock/one">Pierre Méthot</a>
@@ -45,5 +44,12 @@
         gap: 1rem;
         grid-template-columns: 200px 60ch;
         margin-top: 1rem;
+
     }
+
+    h4{
+        color: var(--color-theme-1);
+        margin-bottom: 0em;
+    }
+
 </style>
