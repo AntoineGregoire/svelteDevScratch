@@ -104,14 +104,14 @@
   </script>
   
   <section>
-	  <button on:click={showPopup}>Show a popup!</button>
+	  <!-- <button on:click={showPopup}>Show a popup!</button> -->
+	  <!-- <br/> -->
+	  <!-- <button on:click={showPopupCustom}>Show a customized popup and listen to events!</button> -->
 	  <br/>
-	  <!-- <button on:click={showPopupCustom}>Show a customized popup and listen to events!</button>
-	  <br/>
-	  <button on:click={showDialog}>Show a dialog!</button> -->
+	  <button on:click={showDialog}>Show a dialog!</button>
   
 	  {#if status === 1}
-		  <p>Hi {name}! 👋</p>
+		  <p>Hours were successfully logged for {name}.</p>
 	  {:else if status === -1}
 		  <p><em>Dialog was canceled</em></p>
 	  {/if}

@@ -11,6 +11,7 @@
 <p>You can check In and check Out of work on this page</p>
 
 <Modal show={$modal}>
-	<Content />
+	<!-- <Content /> -->
+	<Content2 />
 </Modal>
 

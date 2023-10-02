@@ -50,29 +50,6 @@
       type="text"
         bind:value
         on:keydown={e => e.which === 13 && _onOkay()} />
-    <br/>
-    <input
-          disabled
-        type="text"
-          value="I'm disabled, but I don't break the tabulation"
-      />
-    <br/>
-    <input
-          hidden
-        type="text"
-          value="I'm hidden, but I don't break the tabulation"
-      />
-    <br/>
-    <input
-        type="hidden"
-          value="I'm hidden, but I don't break the tabulation"
-      />
-      <div class="hidden">
-          <input
-              type="text"
-              value="I'm indirectly hidden, but I don't break the tabulation"
-          />
-    </div>
   {/if}
   
   <div class="buttons">
