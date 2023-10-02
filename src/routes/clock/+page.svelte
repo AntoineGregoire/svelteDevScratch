@@ -1,5 +1,6 @@
 <script>
 	import Content from './Content.svelte';
+	import Content2 from './Content2.svelte';
     import Modal from './Modal.svelte';
 	import Popup from './Popup.svelte';
 	import { modal } from './stores.js';
@@ -12,3 +13,4 @@
 <Modal show={$modal}>
 	<Content />
 </Modal>
+

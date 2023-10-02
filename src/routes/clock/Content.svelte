@@ -3,29 +3,39 @@
 	
 	import { bind } from './Modal.svelte';
 	
-  import Popup from './Popup.svelte';
+	import Popup from './Popup.svelte';
 	
 	import { modal } from './stores.js';
 	
+	import { getContext } from 'svelte';
+	const { open } = getContext('simple-modal');
+
 	let opening = false;
 	let opened = false;
 	let closing = false;
 	let closed = false;
 
-  const showPopup = () => {
-		modal.set(Popup);
-	};
+	const showPopup = () => {
+			modal.set(Popup);
+		};
 
-  const showPopupWithProps = () => {
-		modal.set(bind(Popup, { message: "Add hours here:" }));
-	};
+	const showPopupWithProps = () => {
+			modal.set(bind(Popup, { message: "Add hours here:" }));
+		};
+
+	const showPopupInternal = () => {
+		open(Popup, { message: "Select Action Here:" });
+	  };
+
 </script>
 
 <section>
-	<button on:click={showPopupWithProps}>Add Employee Hours</button>
-	<p style="padding: 500px 0;">
-		Just some text to overflow the body
-	</p>
+	<hr />
+	<!-- <button on:click={showPopup}>Show a popup from an outside component!</button>
+	<br /> -->
+	<button on:click={showPopupInternal}>Andre de Grasse</button>
+	<br />
+	<!-- <button on:click={showPopupWithProps}>Add Hours</button> -->
 </section>
 
 <style>
