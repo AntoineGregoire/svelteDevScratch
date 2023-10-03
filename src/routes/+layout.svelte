@@ -4,9 +4,11 @@
 	import './styles.css';
 
     onNavigate(() => {
+        // @ts-ignore
         if (!document.startViewTransition) return;
 
         return new Promise((fulfill) => {
+            // @ts-ignore
             document.startViewTransition(() => new Promise(fulfill))
         });
     });

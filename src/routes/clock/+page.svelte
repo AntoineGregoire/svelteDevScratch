@@ -1,17 +1,21 @@
 <script>
-	import Content from './Content.svelte';
-	import Content2 from './Content2.svelte';
-    import Modal from './Modal.svelte';
-	import Popup from './Popup.svelte';
-	import { modal } from './stores.js';
+	import Modal from './Modal.svelte';
+
+	let showModal = false;
 </script>
 
 <h1>Clock Page</h1>
 
 <p>You can check In and check Out of work on this page</p>
+<button on:click={() => (showModal = true)}> Clock In </button>
 
-<Modal show={$modal}>
-	<!-- <Content /> -->
-	<Content2 />
+
+<Modal bind:showModal>
+	<h2 slot="header">
+		Sign In Page
+	</h2>
+
+	
+
 </Modal>
 
