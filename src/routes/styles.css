@@ -32,8 +32,6 @@ body {
 		linear-gradient(180deg, var(--color-bg-0) 0%, var(--color-bg-1) 15%, var(--color-bg-2) 50%);
 }
 
-h1,
-h2,
 p {
 	font-weight: 400;
 	font-family: var(--font-body);
@@ -62,6 +60,7 @@ h1 {
 
 h2 {
 	font-size: 1rem;
+	color: var(--color-theme-1);
 }
 
 pre {
@@ -85,10 +84,10 @@ pre {
 }
 
 input,
-button {
+/* button {
 	font-size: inherit;
 	font-family: inherit;
-}
+} */
 
 button:focus:not(:focus-visible) {
 	outline: none;
@@ -113,11 +112,11 @@ button:focus:not(:focus-visible) {
 }
 
 button{
-	width: 14em;
+	width: 12em;
 	height: 3em;
-	font-family: var(--font-mono);
 	justify-content: center;
 	margin: 0 auto;
+	font-family: var(--font-mono);
 	background-color: var(--color-theme-1);
 	border-color: var(--color-theme-2);
 }

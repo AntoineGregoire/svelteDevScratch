@@ -44,43 +44,23 @@
 		justify-content: space-between;
 	}
 
-	.corner {
-		width: 6em;
-		height: 5em;
-	}
-
+	.corner { width: 6em; height: 5em;}
 	.corner a {
 		display: flex;
 		align-items: center;
 		justify-content: center;
 		width: 100%;
-		height: 100%;
-	}
+		height: 100%; }
+	.corner img { width: 5em; height: 5em; object-fit: contain;}
 
-	.corner img {
-		width: 5em;
-		height: 5em;
-		object-fit: contain;
-	}
-
-	.corner2 {
-		width: 4em;
-		height: 4em;
-	}
-
+	.corner2 { width: 4em; height: 4em;}
 	.corner2 a {
 		display: flex;
 		align-items: center;
 		justify-content: center;
 		width: 100%;
-		height: 100%;
-	}
-
-	.corner2 img {
-		width: 3em;
-		height: 3em;
-		object-fit: contain;
-	}
+		height: 100%; }
+	.corner2 img { width: 3em; height: 3em; object-fit: contain;}
 
 	nav {
 		display: flex;
