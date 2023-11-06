@@ -1,3 +1,17 @@
+<script>
+	
+	// $: if (dialog && showModal) dialog.showModal();
+	
+	import { createEventDispatcher } from 'svelte';
+	export let value = '';
+	const dispatch = createEventDispatcher();
+
+	// @ts-ignore
+	const select = (num) => () => (value += num);
+	const clear = () => (value = '');
+	const submit = () => dispatch('submit');
+</script>
+
 <div class="clock">
     <aside>
         

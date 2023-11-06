@@ -20,10 +20,7 @@
 				<a href="/">Home</a>
 			</li>
 			<li aria-current={$page.url.pathname === '/clock' ? 'page' : undefined}>
-				<a href="/clock">Clock In/Out</a>
-			</li>
-			<li aria-current={$page.url.pathname === '/chalets' ? 'page' : undefined}>
-				<a href="/chalets">Chalets</a>
+				<a href="/clock">Clock In</a>
 			</li>
 		</ul>
 		<svg viewBox="0 0 2 3" aria-hidden="true">
@@ -32,9 +29,9 @@
 	</nav>
 
 	<div class="corner2">
-		<a href="https://www.sapphiredesign.io/">
+		<!-- <a href="https://www.sapphiredesign.io/"> -->
 			<img src={sappihre} alt="Sapphire Design" />
-		</a>
+		<!-- </a> -->
 	</div>
 </header>
 
@@ -54,12 +51,6 @@
 	.corner img { width: 5em; height: 5em; object-fit: contain;}
 
 	.corner2 { width: 4em; height: 4em;}
-	.corner2 a {
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		width: 100%;
-		height: 100%; }
 	.corner2 img { width: 3em; height: 3em; object-fit: contain;}
 
 	nav {
@@ -114,7 +105,8 @@
 		display:flex;
 		height: 100%;
 		align-items: center;
-		padding: 0 0.5rem;
+		padding: 0.5rem;
+		padding-top: 1em;
 		color: var(--color-text);
 		font-weight: 900;
 		font-size: 0.8rem;

@@ -3,7 +3,7 @@
 	 * @type {boolean}
 	 */
 	 export let showModal; // boolean
-
+	
 	/**
 	 * @type {HTMLDialogElement}
 	 */
@@ -29,7 +29,7 @@
 	<div on:click|stopPropagation>
 		<slot name="header" />
 		<hr />
-		<slot />
+			<slot />
 		<hr />
 		<div class="keypad">
 			<button on:click={select(1)}>1</button>
@@ -55,19 +55,18 @@
 
 <style>
 	dialog {
-		padding: 1rem;
-		background: white;
-		max-width: 400px;
-		padding-top: 1rem;
-		border-radius: 20px;
+		/* padding: 1rem; */
+		/* background: white; */
+		/* max-width: 400px; */
+		/* padding-top: 1rem; */
+		/* border-radius: 20px; */
 		box-shadow: 0 5px 30px 0 rgb(0 0 0 / 10%);
 		animation: fadeIn 1s ease both;
 	}
 	dialog::backdrop {
 		animation: fadeIn 1s ease both;
 		background: rgb(255 255 255 / 40%);
-		z-index: 2;
-		backdrop-filter: blur(ease);
+		/* z-index: 2; */
 	}
 	.keypad {
 		display: grid;
@@ -80,6 +79,7 @@
 		align-items: center;
 		}
 	button {
+		display: inline;
 		max-width: 120%;
 		height: 105%;
 		border-radius: 20px;
@@ -98,15 +98,12 @@
 	dialog[open]::backdrop {
 		animation: fade 0.2s ease-out;
 	}
-	@keyframes fade {
+	/* @keyframes fade {
 		from {
 			opacity: 0;
 		}
 		to {
 			opacity: 1;
 		}
-	}
-	button {
-		display: inline; /* select inline instead of block if desired */
-	}
+	} */
 </style>
