@@ -5,7 +5,7 @@
 </script>
 
 <header>
-	<div class="corner">
+	<div class="leftCornerH">
 		<a href="https://www.campinglacsa.com/">
 			<img src={logo} alt="Camping Lac St-Augustin" />
 		</a>
@@ -20,7 +20,7 @@
 				<a href="/">Home</a>
 			</li>
 			<li aria-current={$page.url.pathname === '/clock' ? 'page' : undefined}>
-				<a href="/clock">Clock In</a>
+				<a href="/clock">Chalets </a>
 			</li>
 		</ul>
 		<svg viewBox="0 0 2 3" aria-hidden="true">
@@ -28,7 +28,7 @@
 		</svg>
 	</nav>
 
-	<div class="corner2">
+	<div class="rightCornerH">
 		<!-- <a href="https://www.sapphiredesign.io/"> -->
 			<img src={sappihre} alt="Sapphire Design" />
 		<!-- </a> -->
@@ -41,17 +41,17 @@
 		justify-content: space-between;
 	}
 
-	.corner { width: 6em; height: 5em;}
-	.corner a {
+	.leftCornerH { width: 6em; height: 5em;}
+	/* .leftCornerH a {
 		display: flex;
 		align-items: center;
 		justify-content: center;
 		width: 100%;
-		height: 100%; }
-	.corner img { width: 5em; height: 5em; object-fit: contain;}
+		height: 100%; } */
+	.leftCornerH img { width: 5em; height: 5em; object-fit: contain;}
 
-	.corner2 { width: 4em; height: 4em;}
-	.corner2 img { width: 3em; height: 3em; object-fit: contain;}
+	.rightCornerH { width: 4em; height: 4em;}
+	.rightCornerH img { width: 3em; height: 3em; object-fit: contain;}
 
 	nav {
 		display: flex;
