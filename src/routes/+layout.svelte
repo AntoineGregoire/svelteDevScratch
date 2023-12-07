@@ -1,17 +1,15 @@
 <script>
-    import { onNavigate } from '$app/navigation';
-    import Header from './Header.svelte';
-	import './styles.css';
+    // import { onNavigate } from '$app/navigation';
+    import Header from '$lib/components/Header.svelte';
+	import "$lib/style.css";
 
-    onNavigate(() => {
-        // @ts-ignore
-        if (!document.startViewTransition) return;
+    // onNavigate(() => {
+    //     if (!document.startViewTransition) return;
 
-        return new Promise((fulfill) => {
-            // @ts-ignore
-            document.startViewTransition(() => new Promise(fulfill))
-        });
-    });
+    //     return new Promise((fulfill) => {
+    //         document.startViewTransition(() => new Promise(fulfill))
+    //     });
+    // });
 </script>
 
 

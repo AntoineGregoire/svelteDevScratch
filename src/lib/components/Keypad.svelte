@@ -32,15 +32,17 @@
 		grid-template-columns: repeat(3, 5em);
 		grid-template-rows: repeat(4, 3em);
 		grid-gap: 1.3em;
-		width:700%;
-		padding: 1em;
+		width: auto;
+		padding-left: 1em;
+		padding-right: 1em;
 		padding-bottom: 2em;
 		align-items: center;
 		}
 	button {
 		display: inline;
-		max-width: 120%;
-		height: 105%;
+		width: 120%;
+		/* max-width: 120%; */
+		height: 110%;
 		border-radius: 20px;
 	}
 </style>
