@@ -20,12 +20,6 @@
       name="userAvatar"
       value={form?.userAvatar ?? ""}
     />
-    <input
-      placeholder="Password"
-      type="text"
-      name="userPswrd"
-      value={form?.userPswrd ?? ""}
-    />
     <button type="submit">Signup</button>
 
     <a class="back" href="/"> or Cancel </a>

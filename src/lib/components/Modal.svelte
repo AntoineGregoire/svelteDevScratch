@@ -15,6 +15,7 @@
 
 	function handleSubmit() {
 		if (pin==currUser.password) {
+			if(currUser.loggedIn)
 			
 			currUser.loggedIn=true; // DOES NOT WORK 
 			validEntry = true;
@@ -45,10 +46,9 @@
 			<Keypad bind:value={pin} on:submit={handleSubmit} />
 		{:else if validEntry}
 			<h1>You are now logged in! </h1>
-			<button>View tasks</button>
-			<button>Main Menu</button>
-		{/if} 
-		
+			<button><a href="/create">View tasks</a></button>
+			<button><a href="/">Retourne</a></button>
+		{/if}
 	</div>
 </div>
 
@@ -82,6 +82,10 @@
 		margin-top:6%;
 		margin-bottom:6%;
 	}
+
+
+
+	
 	/* dialog[open] {
 		animation: zoom 0.3s cubic-bezier(0.34, 1.56, 0.64, 0.5);
 	} */

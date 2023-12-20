@@ -6,25 +6,19 @@
 
 <div class="page">
   <form method="post">
-    <h1>Create Draft</h1>
+    <h1>Create Task</h1>
     {#if form?.missing}<p class="error">Missing field required!</p>{/if}
     <input
       name="title"
-      placeholder="Title"
+      placeholder="Titre"
       type="text"
       value={form?.title ?? ""}
-    />
-    <input
-      name="authorEmail"
-      placeholder="Author email address"
-      type="email"
-      value={form?.authorEmail ?? ""}
     />
     <textarea
       name="content"
       cols="50"
-      placeholder="Content"
-      rows="8" 
+      placeholder="Contenu  Additionel"
+      rows="4" 
     /> 
     <!-- value={form?.content ?? ""} -->
 
@@ -38,6 +32,7 @@
     background: white;
     padding: 3rem;
     display: flex;
+    border: 10px;
     justify-content: center;
     align-items: center;
   }
@@ -53,7 +48,7 @@
   }
 
   button[type="submit"] {
-    background: #ececec;
+    background: #c22e2e;
     border: 0;
     padding: 1rem 2rem;
   }

@@ -15,17 +15,14 @@ export const actions = {
 
         let name = data.get("name")
         let userAvatar = data.get("userAvatar")
-        let userPswrd = data.get("userPassword")
+        //let userPswrd = data.get("userPassword")
 
         // 2.
-        if (!name || !userAvatar || !userPswrd) {
+        if (!name || !userAvatar) {
             return fail(400, { name, userAvatar, missing: true });
         }
                 // 3.
-        if (typeof name != "string" || typeof userAvatar != "string" || typeof userPswrd != "string") {
-            return fail(400, { incorrect: true })
-        }
-        if(userPswrd.length != 4){
+        if (typeof name != "string" || typeof userAvatar != "string") {
             return fail(400, { incorrect: true })
         }
 
@@ -33,9 +30,7 @@ export const actions = {
         await prisma.user.create({
             data: {
                 name: name,
-                password: userPswrd, 
                 avatar: userAvatar,
-                
             },
         });
 

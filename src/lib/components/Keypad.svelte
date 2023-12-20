@@ -35,9 +35,7 @@
 		grid-template-columns: repeat(3, 6em);
 		grid-template-rows: repeat(4, 3.7em);
 		grid-gap: 1.5em;
-		/* width: auto; */
 		padding-right: 1em;
-		/* padding-bottom: 2em; */
 		align-items: center;
 		}
 	button {

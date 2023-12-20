@@ -9,10 +9,10 @@ datasource db {
 
 model User {
   id       Int     @id @default(autoincrement())
-  name     String?
+  name     String
   avatar   String?
   loggedIn Boolean @default(false)
-  password String
+  password String  @default("0000")
   tasks    Task[]
 }
 
