@@ -2,6 +2,7 @@
     // import { onNavigate } from '$app/navigation';
     import Header from '$lib/components/Header.svelte';
 	import "$lib/style.css";
+	import { page } from '$app/stores'
 
     // onNavigate(() => {
     //     if (!document.startViewTransition) return;

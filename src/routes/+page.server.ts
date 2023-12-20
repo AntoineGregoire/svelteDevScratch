@@ -6,10 +6,17 @@ import type { PageServerLoad } from './$types';
 
 export const load = (async () => {
 // 1.
-const response = await prisma.user.findMany({
-    
-  })
+const online = await prisma.user.findMany({
+  orderBy: {
+    id: "asc",
+  }
+})
+
+
+//const images =import.meta.glob('../lib/images/*.png'); 
 
 // 2.
-return { feed: response };
+return { online };
+
+
 }) satisfies PageServerLoad;

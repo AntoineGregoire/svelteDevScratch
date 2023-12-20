@@ -1,5 +1,5 @@
 import type { Handle } from '@sveltejs/kit'
-import { db } from '$lib/prisma'
+import db from '$lib/prisma'
 
 export const handle: Handle = async ({ event, resolve }) => {
   // get cookies from browser
@@ -11,10 +11,9 @@ export const handle: Handle = async ({ event, resolve }) => {
   }
 
   // find the user based on the session
-  const user = await db.user.findUnique({
-    where: { userAuthToken: session },
-    select: { username: true, role: true },
-  })
+  // const user = await db.user.findUnique({
+  //   where: { loggedIn: true },
+  // })
 
   // if `user` exists set `events.local`
   // if (user) {

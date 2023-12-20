@@ -39,6 +39,7 @@
 	},
 	"dependencies": {
 		"@fontsource/fira-mono": "^5.0.8",
-		"@prisma/client": "^5.4.2"
+		"@prisma/client": "^5.4.2",
+		"bcrypt": "^5.1.1"
 	}
 }

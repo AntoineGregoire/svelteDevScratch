@@ -21,28 +21,31 @@
 	<button on:click={select(8)}>8</button>
 	<button on:click={select(9)}>9</button>
 
-	<button disabled={!value} on:click={clear}>clear</button>
+	<button class="wordbtns" disabled={!value} on:click={clear}>clear</button>
 	<button on:click={select(0)}>0</button>
-	<button disabled={!value} on:click={submit}>submit</button>
+	<button class="wordbtns" disabled={!value} on:click={submit}>submit</button>
 </div>
 
 <style>
+	.wordbtns{
+		font-size: large;
+	}
 	.keypad {
 		display: grid;
-		grid-template-columns: repeat(3, 5em);
-		grid-template-rows: repeat(4, 3em);
-		grid-gap: 1.3em;
-		width: auto;
-		padding-left: 1em;
+		grid-template-columns: repeat(3, 6em);
+		grid-template-rows: repeat(4, 3.7em);
+		grid-gap: 1.5em;
+		/* width: auto; */
 		padding-right: 1em;
-		padding-bottom: 2em;
+		/* padding-bottom: 2em; */
 		align-items: center;
 		}
 	button {
 		display: inline;
-		width: 120%;
-		/* max-width: 120%; */
-		height: 110%;
+		width: 125px;
+		max-width: 150px;
+		min-height: 80px;
 		border-radius: 20px;
+		font-size: x-large;
 	}
 </style>

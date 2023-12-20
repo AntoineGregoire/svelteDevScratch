@@ -6,9 +6,8 @@
 
 <div class="page">
   <form method="post">
-    <h1>Signup user</h1>
+    <h1>Nouvel Employé</h1>
     {#if form?.missing}<p class="error">Missing field required!</p>{/if}
-    {#if form?.incorrect}<p class="error">Invalid e-mail address!</p>{/if}
     <input
       placeholder="Name"
       type="text"
@@ -16,10 +15,16 @@
       value={form?.name ?? ""}
     />
     <input
-      placeholder="Email address"
+      placeholder="Avatar"
       type="text"
-      name="userEmail"
-      value={form?.userEmail ?? ""}
+      name="userAvatar"
+      value={form?.userAvatar ?? ""}
+    />
+    <input
+      placeholder="Password"
+      type="text"
+      name="userPswrd"
+      value={form?.userPswrd ?? ""}
     />
     <button type="submit">Signup</button>
 
@@ -33,6 +38,7 @@
     padding: 3rem;
     display: flex;
     justify-content: center;
+    border-radius: 5px;
   }
 
   input[type="text"] {

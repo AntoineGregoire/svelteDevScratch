@@ -4,9 +4,9 @@ import prisma from "$lib/prisma";
 import { fail, redirect } from '@sveltejs/kit';
 import type { Actions } from './$types';
 
-const validateEmail = (email: string) => {
-    return (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email))
-}
+// const validateEmail = (email: string) => {
+//     return (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email))
+// }
 
 export const actions = {
     // 1.
@@ -14,29 +14,31 @@ export const actions = {
         const data = await request.formData();
 
         let name = data.get("name")
-        let userEmail = data.get("userEmail")
+        let userAvatar = data.get("userAvatar")
+        let userPswrd = data.get("userPassword")
 
         // 2.
-        if (!name || !userEmail) {
-            return fail(400, { name, userEmail, missing: true });
+        if (!name || !userAvatar || !userPswrd) {
+            return fail(400, { name, userAvatar, missing: true });
         }
                 // 3.
-        if (typeof name != "string" || typeof userEmail != "string") {
+        if (typeof name != "string" || typeof userAvatar != "string" || typeof userPswrd != "string") {
             return fail(400, { incorrect: true })
         }
-                // 4.
-        if (!validateEmail(userEmail)) {
-            return fail(400, { name, incorrect: true });
+        if(userPswrd.length != 4){
+            return fail(400, { incorrect: true })
         }
 
         // 5.
         await prisma.user.create({
             data: {
-                name,
-                email: userEmail,
+                name: name,
+                password: userPswrd, 
+                avatar: userAvatar,
+                
             },
         });
 
-        throw redirect(303, `/drafts`)
+        throw redirect(303, `/`)
     }
 } satisfies Actions;
