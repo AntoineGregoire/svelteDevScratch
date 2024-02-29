@@ -11,19 +11,19 @@
 </script>
 
 <div class="keypad">
-	<button on:click={select(1)}>1</button>
-	<button on:click={select(2)}>2</button>
-	<button on:click={select(3)}>3</button>
-	<button on:click={select(4)}>4</button>
-	<button on:click={select(5)}>5</button>
-	<button on:click={select(6)}>6</button>
-	<button on:click={select(7)}>7</button>
-	<button on:click={select(8)}>8</button>
-	<button on:click={select(9)}>9</button>
+	<button type="button" on:click={select(1)}>1</button>
+	<button type="button" on:click={select(2)}>2</button>
+	<button type="button" on:click={select(3)}>3</button>
+	<button type="button" on:click={select(4)}>4</button>
+	<button type="button" on:click={select(5)}>5</button>
+	<button type="button" on:click={select(6)}>6</button>
+	<button type="button" on:click={select(7)}>7</button>
+	<button type="button" on:click={select(8)}>8</button>
+	<button type="button" on:click={select(9)}>9</button>
 
-	<button class="wordbtns" disabled={!value} on:click={clear}>clear</button>
-	<button on:click={select(0)}>0</button>
-	<button class="wordbtns" disabled={!value} on:click={submit}>submit</button>
+	<button type="button" class="wordbtns" disabled={!value} on:click={clear}>clear</button>
+	<button type="button" on:click={select(0)}>0</button>
+	<button class="wordbtns" disabled={!value} type="submit" on:click={submit}>submit</button>
 </div>
 
 <style>

@@ -1,7 +1,7 @@
 <script lang="ts">
-	import Modal from '$lib/components/Modal.svelte'; 
-	import { showModal } from './stores/overlayStore';
+	import { showLoginModal } from './stores/overlayStore';
 	import { fade } from 'svelte/transition';
+	import Modal from '$lib/components/Modal.svelte'; 
 
 	import avatars from '../lib/images/avatar';
 	import type { PageData } from "./$types";
@@ -11,39 +11,66 @@
 
 	let userPointer: any;
 
-	function openUserModal(tempID: User) {	
-		//userPointer = data.offline.find(user => user.id === tempID);	
+	function openModalFunc(tempID: User) {	
+		showLoginModal.set(true)
 		userPointer = tempID
-		showModal.set(true)
-		return userPointer
 	}
-
-
-	
 </script>
 
-<div class="mainContainer">
-	<h1 class="sideName"><u>Offline</u></h1>
+
+
+
+<div class="mainContain">
+
+	{#if $showLoginModal}
+		<form method="post" action="/create">	
+			<!-- <label for="username">Username</label> -->
+			<input bind:value={userPointer.id} name="identification" type="hidden"/>
+			<Modal currUser={userPointer}></Modal>
+
+			<!-- <label for="password">Password</label> -->
+			<input value={data.pin} name="password" type="hidden">
+		</form>
+		
+	{/if}
+
+	<h1 class="sideName"><u>Log in here</u></h1>
 	<div in:fade={{duration:600}} class="primary">
-		{#each data.online as onln}
-				<button on:click={() => {openUserModal(onln)}}>
-					<div class={onln.name}>
+			{#each data.userlist as useritem}
+				<button on:click={() => {openModalFunc(useritem)}}>
+					<div>
 						<img src={avatars.avatar1} alt="P">
 					</div>
 					<div>
-						{onln.name}
+						{useritem.name}
 					</div>
 				</button>
-		{/each}
+			{/each}
 	</div>	
-	{#if $showModal}
-		<Modal currUser={userPointer}></Modal>
-	{/if}
 </div>
+<!-- bind:value={pin} -->
 
+<!-- <div class="container">
+	{#if strategy_visible}
+		<div class="container" >
+			<form method="POST" class="form">				
+				<label class="form-control select-lg w-full max-w">
+					<div class="label"> <span>Select a Strategy</span> </div>
+					<select bind:value={} name="strategy">
+					<option disabled selected>-</option>
+					{#each strategyList as strategy} {/each}
+					</select>
+				</label>
+				<button type="submit">Next</button>
+				<a href="/dashboard"> 
+					<button class="btn uppercase">Cancel</button>
+				</a>
+			</form>
+		</div>
+	{/if}
+</div> -->
 <style>
 	.mainContain {
-		display: flex;
 		min-height: 100vh;
 	}
 	img {width: 4vw; object-fit: contain;}

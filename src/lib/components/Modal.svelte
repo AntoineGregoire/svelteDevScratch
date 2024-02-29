@@ -1,52 +1,61 @@
 <script lang="ts">
 	import type { PageData } from '../../routes/$types';
-	import { showModal } from '../../routes/stores/overlayStore';
+	import { showLoginModal } from '../../routes/stores/overlayStore';
+	import { USRval } from '../../routes/stores/overlayStore';
 	import Keypad from './Keypad.svelte';
-	import type { User } from '@prisma/client';
-
 	
+	export let currUser: any;
 	let data: PageData;
-	export let currUser: User;
-	
+	let validEntry = false;
 	let pin: string;
 	$: view = pin ? pin.replace(/\d(?!$)/g, '•') : 'Enter your pin';
 	
-	let validEntry = false;
-
 	function handleSubmit() {
 		if (pin==currUser.password) {
-			if(currUser.loggedIn)
-			
-			currUser.loggedIn=true; // DOES NOT WORK 
+			//if(currUser.loggedIn)
 			validEntry = true;
+			USRval.set(currUser.id)
 		} else {
 			alert("Password incorrect")
+			pin = ''
 		}
-
 	}
+
+	
 </script>
 
 <svelte:window
   on:keydown={e => {
     if (e.keyCode == 27) {
-		showModal.set(false);
+		showLoginModal.set(false);
     }
   }} />
 <!-- on:close={() => {showModal.set(false)}} -->
-<div class="outsideModal" on:click={() => {showModal.set(false)}} aria-hidden="true">
+<div class="outsideModal" on:click={() => {showLoginModal.set(false)}} aria-hidden="true">
 	<div class="insideModal" on:click|stopPropagation aria-hidden="true"> 
-		<span class="close" aria-hidden="true" on:click|self={() => {showModal.set(false)}}>
-			&times;
-		</span>
-		{#if !validEntry}
+		<span class="close" aria-hidden="true" on:click|self={() => {showLoginModal.set(false)}}>
+			&times; 
+		</span> 
+		{#if !validEntry} 
 			<h2 class="leftTitle"> 
 			Bonjour, {currUser.name.split(' ').slice(0,1)}<hr>
 			</h2>	
-			<h2 class:pin>{view}</h2>
-			<Keypad bind:value={pin} on:submit={handleSubmit} />
+			<h2 class:pin>{(pin ? pin.replace(/\d(?!$)/g, '•') : 'Enter your pin')}</h2>
+				
+			<form method="post" action="/create">	
+				<!-- <label for="username">Username</label> -->
+				<input bind:value={currUser.id} name="identification" type="hidden"/>
+				
+				<Keypad bind:value={pin} on:submit={handleSubmit}/>
+
+				<!-- <label for="password">Password</label> -->
+				<input value={pin} name="password" type="hidden">
+			</form>
+			
+			
 		{:else if validEntry}
-			<h1>You are now logged in! </h1>
-			<button><a href="/create">View tasks</a></button>
+			<h1>You are now logged in! {$USRval}</h1>
+			<button><a href="/todos">View tasks</a></button>
 			<button><a href="/">Retourne</a></button>
 		{/if}
 	</div>
@@ -73,17 +82,15 @@
 	}
 	.insideModal {
 		background-color:rgb(228, 228, 228);
+		border: 50px black;
 		border-radius: 15px;
-		border-color: var(--color-theme-2);
 		opacity: 95%;
-		flex-wrap: wrap;
-		width: 40vw;
+		/* flex-wrap: wrap; */
+		width: 430px;
 		padding: 1rem;
-		margin-top:6%;
-		margin-bottom:6%;
+		margin-top:6vh;
+		margin-bottom:6vh;
 	}
-
-
 
 	
 	/* dialog[open] {

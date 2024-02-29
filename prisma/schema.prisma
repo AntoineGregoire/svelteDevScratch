@@ -24,3 +24,17 @@ model Task {
   taskEnd   DateTime @default(now())
   author    User?    @relation(fields: [authorId], references: [id])
 }
+
+model Chalet {
+  chaletID      Int @id @default(autoincrement())
+  chaletNom     String 
+  cleanState    chaletState   @default(Propre)
+
+
+}
+
+enum chaletState {
+  Propre
+  Sale
+  horsService
+}

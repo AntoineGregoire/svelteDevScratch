@@ -1,16 +1,29 @@
-<script>
-    // import { onNavigate } from '$app/navigation';
-    import Header from '$lib/components/Header.svelte';
+<script lang="ts">
+    import { onNavigate } from '$app/navigation';
+	import type { PageData } from './$types';
+    import { onMount } from 'svelte';
+	import { showLoginModal } from './stores/overlayStore';
+	import { USRval } from './stores/overlayStore';
+
+	import Header from '$lib/components/Header.svelte';
 	import "$lib/style.css";
-	import { page } from '$app/stores'
+	
+	//export let data: PageData;
 
-    // onNavigate(() => {
-    //     if (!document.startViewTransition) return;
+    onNavigate(() => {
+		 // @ts-ignore 
+        if (!document.startViewTransition) return;
 
-    //     return new Promise((fulfill) => {
-    //         document.startViewTransition(() => new Promise(fulfill))
-    //     });
-    // });
+        return new Promise((fulfill) => {
+			 // @ts-ignore 
+            document.startViewTransition(() => new Promise(fulfill))
+        });
+    });
+
+	onMount(() => {
+		//console.log(data.session)
+		//console.log(data.user)
+	});
 </script>
 
 
