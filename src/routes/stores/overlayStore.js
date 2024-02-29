@@ -1,10 +1,9 @@
-import { getContext, setContext } from "svelte";
-import { User } from '@prisma/client';
+// import { User } from '@prisma/client';
 import { writable } from "svelte/store";
 
 
 //export const userState = writable(null);
-export const USRval = writable(0);
+export const USRval = writable(Number(0));
 
 export const showLoginModal = writable(false);
 export const showTaskModal = writable(false);

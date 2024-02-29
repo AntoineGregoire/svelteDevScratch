@@ -2,6 +2,7 @@
 
 import prisma from '$lib/prisma';
 import type { PageServerLoad, Actions } from './$types'; 
+import { USRval } from './stores/overlayStore';
 
 export const load: PageServerLoad = (async () => {
   const userlist = await prisma.user.findMany({
@@ -16,11 +17,12 @@ return { userlist };
 export const actions: Actions = {
   default: async ({ request }) => {
       const data = await request.formData();
-      const USRID = Number(data.get("identification"))
+      console.log("Severside User ID:", USRval)
+      
     
   const updateUser = await prisma.user.update({
     where: {
-      id: USRID,  
+      id: USRval,  
     },
     data: {
           loggedIn: {

@@ -15,6 +15,7 @@
 			//if(currUser.loggedIn)
 			validEntry = true;
 			USRval.set(currUser.id)
+			console.log("Modalside User ID:", USRval)
 		} else {
 			alert("Password incorrect")
 			pin = ''
@@ -42,14 +43,15 @@
 			</h2>	
 			<h2 class:pin>{(pin ? pin.replace(/\d(?!$)/g, '•') : 'Enter your pin')}</h2>
 				
-			<form method="post" action="/create">	
+			<form method="post">	
 				<!-- <label for="username">Username</label> -->
 				<input bind:value={currUser.id} name="identification" type="hidden"/>
+
+				<input hidden bind:value={pin} type="text" name="pin">
 				
 				<Keypad bind:value={pin} on:submit={handleSubmit}/>
 
 				<!-- <label for="password">Password</label> -->
-				<input value={pin} name="password" type="hidden">
 			</form>
 			
 			

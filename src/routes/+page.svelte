@@ -23,14 +23,12 @@
 <div class="mainContain">
 
 	{#if $showLoginModal}
-		<form method="post" action="/create">	
+		<!-- <form method="POST">	 -->
 			<!-- <label for="username">Username</label> -->
-			<input bind:value={userPointer.id} name="identification" type="hidden"/>
-			<Modal currUser={userPointer}></Modal>
+			<!-- <input bind:value={userPointer.id} name="identification" type="hidden"/> -->
+		<Modal currUser={userPointer}></Modal>
 
-			<!-- <label for="password">Password</label> -->
-			<input value={data.pin} name="password" type="hidden">
-		</form>
+		<!-- </form> -->
 		
 	{/if}
 
