@@ -4,59 +4,50 @@
   export let form: ActionData;
 </script>
 
-<div class="page">
-  <form method="post">
-    <h1>Create Task</h1>
-    {#if form?.missing}<p class="error">Missing field required!</p>{/if}
-    <input
-      name="title"
-      placeholder="Titre"
-      type="text"
-      value={form?.title ?? ""}
-    />
-    <textarea
-      name="content"
-      cols="50"
-      placeholder="Contenu  Additionel"
-      rows="4" 
-    /> 
-    <!-- value={form?.content ?? ""} -->
-
-    <button type="submit">Create</button>
-    <a class="back" href="/"> or Cancel </a>
-  </form>
+<div class="center-content">
+    {#if form?.message}
+    	<h2 class="error">{form?.message}</h2>
+    {:else if form?.success}
+    	<h2> New member added!</h2>
+    {:else}
+    	<h2>Add a new employee to the db </h2>
+    {/if}
+	<div>
+		<form method="POST">
+			<label>
+				<div class="label">
+				  <span>Name</span>
+				</div>
+				<input name="fullname" type="text" placeholder="Name" />
+			</label>
+          	<label>
+				<div class="label">
+		 			<span>Identification Number </span>
+				</div>
+				<input name="identification" type="number" placeholder="ID (9 digits)" />
+			</label>
+			<label>
+				<div class="label">
+					<span>Password</span>
+				</div>
+				<input name="newPassword" type="password" id="password" placeholder="Password"/><br />
+			</label>
+			<button type="submit" class="btn btn-neutral btn-sm my-1">Sign up</button>
+		</form>
+	</div>
 </div>
 
 <style>
-  .page {
-    background: white;
-    padding: 3rem;
-    display: flex;
-    border: 10px;
-    justify-content: center;
-    align-items: center;
-  }
+	.center-content {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		height: 85vh;
+	}
 
-  input[type="text"],
-  input[type="email"],
-  textarea {
-    width: 100%;
-    padding: 0.5rem;
-    margin: 0.5rem 0;
-    border-radius: 0.25rem;
-    border: 0.125rem solid rgba(0, 0, 0, 0.2);
-  }
-
-  button[type="submit"] {
-    background: #c22e2e;
-    border: 0;
-    padding: 1rem 2rem;
-  }
-
-  .back {
-    margin-left: 1rem;
-  }
-  .error {
+  .error{
     color: red;
+    width: 330px;
   }
 </style>

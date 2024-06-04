@@ -1,43 +1,30 @@
 <script lang="ts">
 	import type { PageData } from '../../routes/$types';
-	import { showTaskModal } from '../../routes/stores/overlayStore';
-	import type { Chalet } from '@prisma/client';
-	import { createEventDispatcher } from 'svelte';
+	import { startTaskModal } from '../../routes/stores/overlayStore';
 
-	
+	export let currTask: any;
 	let data: PageData;
-	export let currTask: Chalet;
-	let validEntry = false;
-
-	
-	
-	function handleSubmit() {
-
-	}
-
-	
 </script>
 
-<svelte:window on:keydown={e => {
-    if (e.keyCode == 27) {showTaskModal.set(false);}}} />
-<!-- on:close={() => {showModal.set(false)}} -->
-<div class="outsideModal" on:click={() => {showTaskModal.set(false)}} aria-hidden="true">
+<svelte:window on:keydown={e => {if (e.keyCode == 27) {
+	startTaskModal.set(false);}}} />
+
+<div class="outsideModal" on:click={() => {startTaskModal.set(false)}} aria-hidden="true">
 	<div class="insideModal" on:click|stopPropagation aria-hidden="true"> 
-		<span class="close" aria-hidden="true" on:click|self={() => {showTaskModal.set(false)}}>
-			&times;
-		</span>
-		{#if !validEntry}
-			<h2 class="leftTitle"> {currTask.chaletNom}</h2>	
-            <p>Ce chalet est {currTask.cleanState}</p>
-			
-			
-		{:else if validEntry}
-			<h1>You are now logged in! </h1>
-			<button><a href="/todos">View tasks</a></button>
-			<button><a href="/">Retourne</a></button>
+		<span class="close" aria-hidden="true" on:click|self={() => {startTaskModal.set(false)}}> &times; </span>
+		
+		<h1 class="leftTitle"> {currTask.chaletNom}</h1>	
+		
+		{#if currTask.taskId}
+			<p>Avez vous fini?</p>
+			<button formaction="?/incompleteTask">Rejetez</button>
+		{:else}
+        	<p>Acceptez ce chalet. </p>
+			<button on:click={() => {startTaskModal.set(false)}}>Cancel</button>
 		{/if}
+		<button type="submit">Accept </button>
 	</div>
-</div>
+</div> 
 
 <style>
 	.close {
@@ -63,11 +50,11 @@
 		border-radius: 15px;
 		border-color: var(--color-theme-2);
 		opacity: 95%;
-		/* flex-wrap: wrap; */
-		width: 40vw;
+		justify-content: center;
+		width: 30vw;
+		height: 60vh;
 		padding: 1rem;
-		margin-top:6vh;
-		margin-bottom:6vh;
+		margin-top:10vh;
+		margin-bottom:10vh;
 	}
-
 </style>

@@ -1,72 +1,54 @@
 <script lang="ts">
-	import { showLoginModal } from './stores/overlayStore';
-	import { fade } from 'svelte/transition';
 	import Modal from '$lib/components/Modal.svelte'; 
-
+	import AdminModal from '$lib/components/adminModal.svelte';
 	import avatars from '../lib/images/avatar';
-	import type { PageData } from "./$types";
+	import type { ActionData, PageData } from "./$types";
 	import type { User } from '@prisma/client';
+	import { showLoginModal, showAdminModal } from './stores/overlayStore';
+	import { enhance } from '$app/forms';
+	import { fade } from 'svelte/transition';
+	import { onMount } from 'svelte';
 
 	export let data: PageData;
+	export let form: ActionData;
 
 	let userPointer: any;
 
-	function openModalFunc(tempID: User) {	
+	onMount(() => {
+		showAdminModal.set(false)
+	})
+
+	function openModalFunc(clickedUser: User) {	
 		showLoginModal.set(true)
-		userPointer = tempID
+		userPointer = clickedUser
 	}
 </script>
 
-
-
-
 <div class="mainContain">
-
-	{#if $showLoginModal}
-		<!-- <form method="POST">	 -->
-			<!-- <label for="username">Username</label> -->
-			<!-- <input bind:value={userPointer.id} name="identification" type="hidden"/> -->
-		<Modal currUser={userPointer}></Modal>
-
-		<!-- </form> -->
-		
-	{/if}
-
-	<h1 class="sideName"><u>Log in here</u></h1>
+	<h1 class="sideName"><u>Welcome, log in here</u></h1>
 	<div in:fade={{duration:600}} class="primary">
 			{#each data.userlist as useritem}
 				<button on:click={() => {openModalFunc(useritem)}}>
-					<div>
-						<img src={avatars.avatar1} alt="P">
-					</div>
-					<div>
-						{useritem.name}
-					</div>
+					<div>	<img src={avatars.Antoine} alt="P">	</div>
+					<div>	{useritem.name}	</div>
 				</button>
 			{/each}
 	</div>	
-</div>
-<!-- bind:value={pin} -->
 
-<!-- <div class="container">
-	{#if strategy_visible}
-		<div class="container" >
-			<form method="POST" class="form">				
-				<label class="form-control select-lg w-full max-w">
-					<div class="label"> <span>Select a Strategy</span> </div>
-					<select bind:value={} name="strategy">
-					<option disabled selected>-</option>
-					{#each strategyList as strategy} {/each}
-					</select>
-				</label>
-				<button type="submit">Next</button>
-				<a href="/dashboard"> 
-					<button class="btn uppercase">Cancel</button>
-				</a>
-			</form>
-		</div>
+	{#if $showLoginModal}
+		<form method="POST" action="?/employeeLogin" use:enhance>	
+			<input hidden bind:value={userPointer.id} name="identification" type="number"/>
+			<Modal currUser={userPointer} form={form}></Modal>
+		</form> 
 	{/if}
-</div> -->
+
+	{#if $showAdminModal}
+		<form method="POST" action="?/adminActivation" use:enhance>	
+			<AdminModal form={form}></AdminModal>
+		</form>
+	{/if}
+</div>
+
 <style>
 	.mainContain {
 		min-height: 100vh;
@@ -81,7 +63,6 @@
 		margin-bottom: 3vh;
 		border-radius: 3vh;
 		grid-template-columns: 4vw 13vw;
-		/* font-family: var(--font-mono); */
 		border-color: var(--color-theme-2);
 		background-color: var(--color-theme-1);
 	}

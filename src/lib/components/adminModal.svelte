@@ -1,9 +1,8 @@
 <script lang="ts">
 	import type { ActionData, PageData } from '../../routes/$types';
-	import { showLoginModal } from '../../routes/stores/overlayStore';
+	import { showAdminModal } from '../../routes/stores/overlayStore';
 	import Keypad from './Keypad.svelte';
 	
-	export let currUser: any;
 	export let form: ActionData;
 	let data: PageData;
 	let pin: string;
@@ -19,15 +18,13 @@
 </script>
 
 <svelte:window on:keydown={e => { if (e.keyCode == 27) {
-		showLoginModal.set(false);}}} />
+		showAdminModal.set(false);}}} />
 
-<div class="outsideModal" on:click={() => {showLoginModal.set(false)}} aria-hidden="true">
+<div class="outsideModal" on:click={() => {showAdminModal.set(false)}} aria-hidden="true">
 	<div class="insideModal" on:click|stopPropagation aria-hidden="true"> 
-		<span class="close" aria-hidden="true" on:click|self={() => {showLoginModal.set(false)}}> &times; </span>  
+		<span class="close" aria-hidden="true" on:click|self={() => {showAdminModal.set(false)}}> &times; </span>  
 
-		<h2 class="leftTitle"> 
-		Bonjour, {currUser.name.split(' ').slice(0,1)}<hr>
-		</h2>
+		<h2 class="leftTitle"> Admin Login </h2>
 
 		{#if form?.incorrect}
 			<h2 class="error">{form?.message}</h2>

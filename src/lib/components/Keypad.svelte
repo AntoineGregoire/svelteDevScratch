@@ -7,7 +7,7 @@
 
 	const select = (num) => () => (value += num);
 	const clear = () => (value = '');
-	const submit = () => dispatch('submit');
+	// const submit = () => dispatch('submit');
 </script>
 
 <div class="keypad">
@@ -23,7 +23,9 @@
 
 	<button type="button" class="wordbtns" disabled={!value} on:click={clear}>clear</button>
 	<button type="button" on:click={select(0)}>0</button>
-	<button class="wordbtns" disabled={!value} type="submit" on:click={submit}>submit</button>
+	<input hidden bind:value={value} name="pin"/>
+	<button class="wordbtns" disabled={!value} type="submit">Submit</button>
+	<!-- <button class="wordbtns" disabled={!value} type="submit" on:click={submit}>submit</button> -->
 </div>
 
 <style>

@@ -1,18 +1,24 @@
 <script lang="ts">
-	import { page } from '$app/stores';
+	import { page } from '$app/stores'; 
   import logo from '$lib/images/lac-sa.png';
+  import { redirect } from '@sveltejs/kit';
+  import { showAdminModal } from '../../routes/stores/overlayStore';
+
+  function openAdminFunc() {	
+		showAdminModal.set(true)
+	}
 </script>
 
 <nav>
     <div class="left">
-        <a href="/"> <img src={logo} alt="Camping Lac St-Augustin"/></a>
-      <!-- svelte-ignore a11y-missing-attribute -->
-       <a>Lac St-Augustin</a>
+        <a href="/" on:dblclick={()=>{window.location.reload()}} on:click={() => {window.location.assign("localhost:5173/");}}> <img src={logo} alt="Camping Lac St-Augustin"/></a>
+        <!-- svelte-ignore a11y-missing-attribute --> 
+        <a class="text" href="/">Lac St-Augustin</a>
       
     </div>
     <div class="right">
-      <a href="/signup"> New User </a>
-      <a href="/create"> Create task </a>
+      <a href="/" on:click={()=>{openAdminFunc()}}>Admin</a>
+      <a href="/reportingPage"> Signaler un problème </a>
     </div>
 </nav>
 

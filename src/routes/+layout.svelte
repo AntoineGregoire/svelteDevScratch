@@ -1,15 +1,8 @@
 <script lang="ts">
     import { onNavigate } from '$app/navigation';
-	import type { PageData } from './$types';
-    import { onMount } from 'svelte';
-	import { showLoginModal } from './stores/overlayStore';
-	import { USRval } from './stores/overlayStore';
-
 	import Header from '$lib/components/Header.svelte';
 	import "$lib/style.css";
 	
-	//export let data: PageData;
-
     onNavigate(() => {
 		 // @ts-ignore 
         if (!document.startViewTransition) return;
@@ -19,21 +12,13 @@
             document.startViewTransition(() => new Promise(fulfill))
         });
     });
-
-	onMount(() => {
-		//console.log(data.session)
-		//console.log(data.user)
-	});
 </script>
-
 
 <div class="app">
 	<Header />
-
 	<main>
 		<slot />
 	</main>
-
 </div>
 
 <style>
@@ -42,7 +27,6 @@
 		flex-direction: column;
 		min-height: 100vh;
 	}
-	
 	main {
 		flex: 1;
 		display: flex;

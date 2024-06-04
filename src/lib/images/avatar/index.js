@@ -10,9 +10,9 @@ import avatar9 from './cat.png'
 
 
 export default {
-    avatar1,
-    avatar2,
-    avatar3,
+    Antoine : avatar1,
+    Admin : avatar2,
+    Charles : avatar3,
     avatar4,
     avatar5,
     avatar6, 
