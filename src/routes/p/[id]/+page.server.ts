@@ -90,12 +90,14 @@ export const actions: Actions = {
     //Will cause ERROR if there is somehow more than one shift wihout an end time
     console.log("Shift Start: "+shiftInfo[0].shifts[0].shiftStart)
 
-    const hoursToFixed = ((new Date().getTime() - (new Date(shiftInfo[0].shifts[0].shiftStart).getTime())) / 3600000).toFixed(3)
+    const nowTime = new Date().toLocaleString('en', {timeZone: 'America/New_York'})
+
+    const hoursToFixed = ((new Date(nowTime).getTime() - (new Date(shiftInfo[0].shifts[0].shiftStart).getTime())) / 3600000).toFixed(3)
 
     const updateShift = await prisma.shiftEntries.update({
       where: {id: shiftInfo[0].shifts[0].id},
       data: {
-        shiftEnd:  new Date().toLocaleString('en', {timeZone: 'America/New_York'}),
+        shiftEnd:  nowTime,
         hoursWorkd: hoursToFixed
       }
     })

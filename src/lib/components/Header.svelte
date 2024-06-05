@@ -1,7 +1,5 @@
 <script lang="ts">
-	import { page } from '$app/stores'; 
   import logo from '$lib/images/lac-sa.png';
-  import { redirect } from '@sveltejs/kit';
   import { showAdminModal } from '../../routes/stores/overlayStore';
 
   function openAdminFunc() {	
@@ -48,19 +46,12 @@
     display: inline-block;
   }
 
-
   a + a {
     margin-left: 1rem;
   }
-
   .right a {
     border: 1px solid black;
     padding: 0.5rem 1rem;
     border-radius: 5px;
   }
-
-  /* .active{
-    font-weight: bold;
-  } */
-
 </style>

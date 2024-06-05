@@ -24,7 +24,8 @@
 	<div class="insideModal" on:click|stopPropagation aria-hidden="true"> 
 		<span class="close" aria-hidden="true" on:click|self={() => {showAdminModal.set(false)}}> &times; </span>  
 
-		<h2 class="leftTitle"> Admin Login </h2>
+		<h2 class="leftTitle"> Admin Login <hr></h2>
+		
 
 		{#if form?.incorrect}
 			<h2 class="error">{form?.message}</h2>
@@ -58,32 +59,11 @@
 	}
 	.insideModal {
 		background-color:rgb(228, 228, 228);
-		border: 50px black;
 		border-radius: 15px;
 		opacity: 95%;
-		/* flex-wrap: wrap; */
 		width: 480px;
 		padding: 1rem;
 		margin-top:6vh;
 		margin-bottom:6vh;
 	}
-	/* dialog[open] {
-		animation: zoom 0.3s cubic-bezier(0.34, 1.56, 0.64, 0.5);
-	} */
-	/* @keyframes zoom {
-		from {
-			transform: scale(0.95);
-		}
-		to {
-			transform: scale(1);
-		}
-	}
-	@keyframes fade {
-		from {
-			opacity: 0;
-		}
-		to {
-			opacity: 1;
-		}
-	} */
 </style>
