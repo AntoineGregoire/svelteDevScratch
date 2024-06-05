@@ -71,7 +71,7 @@ adminActivation: async ({ request }) => {
   }
 
   const getADMIN = await prisma.user.findUnique({
-    where: { id: 530298164 },
+    where: { id: 130298564 },
     select: { password: true },
   })
 
