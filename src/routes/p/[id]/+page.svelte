@@ -36,7 +36,7 @@
 <div class="mainContainer">
     <h1>Bonjour {data.userInfo?.name}</h1>
     {#if form?.incomplete}
-			<h2 class="error">{form?.message}</h2>
+			<h2 class="err">{form?.message}</h2>
 	{/if}
     {#if data.nullShifts[0].shifts.length > 1}
     <h2>{data.nullShifts[0].shifts}</h2>
