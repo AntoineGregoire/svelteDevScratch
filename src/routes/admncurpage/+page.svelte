@@ -96,7 +96,7 @@
 
     <div>
         <h2>Add new Employee to the Database</h2>
-        <button on:click={()=>{window.location.assign("http://localhost:5173/create")}}>New Employee</button>
+        <button on:click={()=>{window.location.assign("/create")}}>New Employee</button>
     </div>
     
     
