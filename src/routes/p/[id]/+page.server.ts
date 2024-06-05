@@ -75,6 +75,18 @@ export const actions: Actions = {
           where: { shiftEnd: null },
       }}
     })
+    const currentTasks = await prisma.task.findMany({
+      where: {
+          cleanerId: Number(userID),
+          completed: false
+      }
+    })
+    if (currentTasks.length > 0) {
+      return fail(400, {
+        message: "Please complete all tasks before logging out",
+        incomplete: true
+      })
+    }
     //Will cause ERROR if there is somehow more than one shift wihout an end time
     console.log("Shift Start: "+shiftInfo[0].shifts[0].shiftStart)
 
