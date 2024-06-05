@@ -1,0 +1,59 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "./generated/client"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = "DATABASE_URL"
+}
+
+model User {
+  id          Int     @id 
+  name        String
+  avatar      String?
+  loggedIn    Boolean @default(false)
+  password    String 
+  usrAuthTokn String @unique
+  tasks       Task[] 
+  shifts      ShiftEntries[]
+  messages    savedMessages[]
+}
+
+model ShiftEntries {
+  id          Int     @id @default(autoincrement())
+  userName    String
+  userId      Int
+  shiftStart  String
+  shiftEnd    String?
+  hoursWorkd  String?
+  user        User    @relation(fields: [userId], references: [id])
+}
+
+model Chalet {
+  chaletId      Int @id @default(autoincrement())
+  chaletNom     String 
+  cleanState    Boolean   @default(true)
+  workingOn     Boolean   @default(false)
+  tasks    Task[]
+}
+
+model Task {
+  taskId      Int      @id @default(autoincrement())
+  chaletNom   String?
+  cleanerId   Int?
+  chaletId    Int?
+  startTime   String?
+  endTime     String?
+  totalTime   String?
+  completed   Boolean  @default(false)
+  cleaner     User?    @relation(fields: [cleanerId], references: [id])
+  chalet      Chalet?  @relation(fields: [chaletId], references: [chaletId])
+}
+
+model savedMessages {
+  id          Int     @id @default(autoincrement())
+  message     String
+  userId      Int
+  user        User    @relation(fields: [userId], references: [id])
+}
