@@ -77,6 +77,5 @@
 		align-items: center;
 		justify-content: center;
 		width:100%;
-		padding-bottom: 2em;
 	}
 </style>
