@@ -1,7 +1,7 @@
 <script lang="ts">
     import Taskmodal from '$lib/components/Taskmodal.svelte'; 
     import type { PageData, ActionData } from "./$types";
-    import { startTaskModal, reloadBoolean } from '../../../routes/stores/overlayStore';
+    import { startTaskModal } from '../../../routes/stores/overlayStore';
     import { fade } from 'svelte/transition';
 	import { onMount } from 'svelte';
 
@@ -14,10 +14,6 @@
     let isChecked = false;
     let manualDate = (new Date()).toJSON().slice(0, 10);
     let defaultDate: String; 
-
-    onMount(() => {
-        reloadBoolean.set(true)
-    })
 
     function handleClonk() {manualEntryBool = !manualEntryBool}
     function manualSetting() {isChecked = !isChecked}
@@ -40,11 +36,34 @@
 
 <div class="mainContainer">
     <h1>Bonjour {data.userInfo?.name}</h1>
+    <h3>Check In: {data.nullShifts[0].shifts[0].shiftStart.split(', ').slice(1,2)}</h3>
     {#if data.nullShifts[0].shifts.length > 1}
-    <h2>{data.nullShifts[0].shifts}</h2>
         <h2 class="err">Warning: </h2>
-        <h2 class="err">It appears you forgot to log out on: {String(data.nullShifts[0].shifts[0].shiftStart).split(' 2024 ').slice(0,1)}. Please enter this manually.</h2>
+        <h2 class="err">It appears you forgot to log out on: {String(data.nullShifts[0].shifts[0].shiftStart).split(', ').slice(0,1)}. Please enter this manually.</h2>
     {/if}
+
+    <h2>Vos tâches acceptées</h2> 
+    {#if data.currentTasks.length == 0}
+        <p>Aucune tâche a été acceptée en ce moment.</p>
+    {:else}
+        <div in:fade={{duration:600}} class="tdlist">
+            {#each data.currentTasks as curTsk}
+                <button on:click={() => {openEndModal(curTsk)}}>
+                    {curTsk.chaletNom}
+                </button>
+            {/each}
+        </div>
+    {/if}
+    
+    <h2>Pick Up</h2>
+    <div in:fade={{duration:600}} class="tdlist">
+      {#each data.displayChalets as displyChlt}
+            <button on:click={() => {openStartModal(displyChlt)}}>
+                {displyChlt.chaletNom}
+            </button>
+      {/each}
+    </div>
+
     <button on:click={() => {handleClonk()}}>Enter Manually</button>
     {#if manualEntryBool}
         <div class="sameLine">
@@ -80,28 +99,6 @@
     </div>
 	{/if}
 
-    <h2>Vos tâches acceptées</h2> 
-    {#if data.currentTasks.length == 0}
-        <p>Aucune tâche a été acceptée en ce moment.</p>
-    {:else}
-        <div in:fade={{duration:600}} class="tdlist">
-            {#each data.currentTasks as curTsk}
-                <button on:click={() => {openEndModal(curTsk)}}>
-                    {curTsk.chaletNom}
-                </button>
-            {/each}
-        </div>
-    {/if}
-    
-    <h2>Pick Up</h2>
-    <div in:fade={{duration:600}} class="tdlist">
-      {#each data.displayChalets as displyChlt}
-            <button on:click={() => {openStartModal(displyChlt)}}>
-                {displyChlt.chaletNom}
-            </button>
-      {/each}
-    </div>
-
     {#if $startTaskModal}
         {#if newTaskBool}
         <form method="POST" action="?/startTask">
@@ -126,14 +123,24 @@
     /* min-height: 100vh; */
       width: 100%;
   }
+
+  h1 {
+    margin-bottom: 0px;
+  }
+
+   h2 {
+    font-family: var(--font-mono);
+    font-weight: 1000;
+    text-decoration: underline;
+  }
   
   .checkMark {
-      width: 50px;
-      height: 50px;
+      width: 54px;
+      height: 54px;
   }
   .sameLine{
     display: grid;
-    grid-template-columns: 5vw 20vw;
+    grid-template-columns: 80px 300px;
   }
 
   .bottomclass{
@@ -141,11 +148,10 @@
   }
 
   .topPadding{
-    padding-top: 10px;
+    padding-top: 15px;
   }
   .err{
     color: red;
-    margin-bottom: 10px;
     margin-top: 0px;
     padding: 0px;
   }
