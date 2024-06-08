@@ -56,7 +56,7 @@ export const actions: Actions = {
       where: { id: numberID },
       data: { loggedIn: true },
     })
-      
+    //return{success: true}
     throw redirect(303, "/p/"+IDofUser)
 },
 

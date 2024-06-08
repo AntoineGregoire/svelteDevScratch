@@ -46,7 +46,7 @@ export const actions: Actions = {
     const thisChalet = await prisma.chalet.findUnique({
       where: { chaletId: Number(chaletID) }})
     
-    const newUser = await prisma.task.create({
+    await prisma.task.create({
       data: {
         chaletNom: thisChalet?.chaletNom,
         cleanerId: Number(cleanerID),
@@ -54,7 +54,7 @@ export const actions: Actions = {
         startTime: new Date().toLocaleString('en', {timeZone: 'America/New_York'}),
       },
     })
-    const updateChalet = await prisma.chalet.update({
+    await prisma.chalet.update({
       where: { chaletId: Number(chaletID)},
       data: { cleanState: true, 
         workingOn: true,
@@ -83,7 +83,7 @@ export const actions: Actions = {
     })
     if (currentTasks.length > 0) {
       return fail(400, {
-        message: "Il faut compléter toutes vos tâches avant de check out",
+        message: "Il faut compléter toutes vos tâches avant de check out pour la journée.",
         incomplete: true
       })
     }
@@ -94,15 +94,15 @@ export const actions: Actions = {
 
     const hoursToFixed = ((new Date(nowTime).getTime() - (new Date(shiftInfo[0].shifts[0].shiftStart).getTime())) / 3600000).toFixed(3)
 
-    const updateShift = await prisma.shiftEntries.update({
+    await prisma.shiftEntries.update({
       where: {id: shiftInfo[0].shifts[0].id},
       data: {
         shiftEnd:  nowTime,
         hoursWorkd: hoursToFixed
       }
     })
-    console.log("Hours worked: "+ updateShift.hoursWorkd)
-    const updateUser = await prisma.user.update({
+    console.log("Hours worked: "+ hoursToFixed)
+    await prisma.user.update({
       where: {id: Number(userID)},
       data: {  loggedIn: false }
     })
@@ -128,7 +128,7 @@ export const actions: Actions = {
 
     //console.log("Hours worked: "+ totalHours)
 
-    const addShift = await prisma.shiftEntries.create({
+    await prisma.shiftEntries.create({
       data: {
         userId: Number(userID),
         userName: userName,
@@ -165,13 +165,11 @@ export const actions: Actions = {
     })
     //Will cause ERROR if there is somehow more than one shift wihout an end time
 
-
-    
     const totalHours = ((new Date(endDate).getTime() - new Date(shiftInfo[0].shifts[0].shiftStart).getTime()) / 3600000).toFixed(2)
 
-    console.log("Hours worked: "+ totalHours)
+    //console.log("Hours worked: "+ totalHours)
 
-    const addShift = await prisma.shiftEntries.update({
+    await prisma.shiftEntries.update({
       where: {id: Number(shiftInfo[0].shifts[0].id)},
       data: {
         shiftEnd: endDate,
@@ -200,7 +198,7 @@ export const actions: Actions = {
     const hoursToFixed = ((new Date(nowTime).getTime() - new Date(thisTask.startTime).getTime()) / 60000).toFixed(2)
 
     
-    const updateTask = await prisma.task.update({
+    await prisma.task.update({
       where: {taskId: Number(taskID)},
       data: {
         completed: true,
@@ -208,7 +206,7 @@ export const actions: Actions = {
         totalTime: String(hoursToFixed)
       }
     })
-    const updateChalet = await prisma.chalet.update({
+    await prisma.chalet.update({
       where: {chaletId: Number(chaletID)},
       data: { workingOn: false }
     }) 
@@ -226,10 +224,10 @@ export const actions: Actions = {
     if (!taskID) {  return fail(400, { taskID, missing: true }) }
     if (!chaletID) {  return fail(400, { chaletID, missing: true }) }
 
-    const updateTask = await prisma.task.delete({
+    await prisma.task.delete({
       where: {taskId: Number(taskID)},
     })  
-    const updateChalet = await prisma.chalet.update({
+    await prisma.chalet.update({
       where: {chaletId: Number(chaletID)},
       data: { cleanState: false, workingOn: false }
     })  

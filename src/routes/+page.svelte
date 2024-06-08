@@ -4,7 +4,7 @@
 	import avatars from '../lib/images/avatar';
 	import type { ActionData, PageData } from "./$types";
 	import type { User } from '@prisma/client';
-	import { showLoginModal, showAdminModal } from './stores/overlayStore';
+	import { showLoginModal, showAdminModal, reloadBoolean } from './stores/overlayStore';
 	import { enhance } from '$app/forms';
 	import { fade } from 'svelte/transition';
 	import { onMount } from 'svelte';
@@ -16,6 +16,8 @@
 
 	onMount(() => {
 		showAdminModal.set(false)
+		
+		
 	})
 
 	function openModalFunc(clickedUser: User) {	
@@ -30,7 +32,7 @@
 			{#each data.userlist as useritem}
 				<button on:click={() => {openModalFunc(useritem)}}>
 					<div>	<img src={avatars.Antoine} alt="P">	</div>
-					<div>	{useritem.name}	</div>
+					<div class="fontNames">	{useritem.name}	</div>
 				</button>
 			{/each}
 	</div>	
@@ -73,6 +75,9 @@
 	button:hover {
 		color: var(--color-theme-2);
 		background-color: var(--color-theme-3);
+	}
+	.fontNames{
+		font-family: var(--font-mono);
 	}
 
 	.primary {

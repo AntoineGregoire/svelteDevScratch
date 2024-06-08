@@ -1,8 +1,9 @@
 <script lang="ts">
     import Taskmodal from '$lib/components/Taskmodal.svelte'; 
     import type { PageData, ActionData } from "./$types";
-    import { startTaskModal } from '../../../routes/stores/overlayStore';
+    import { startTaskModal, reloadBoolean } from '../../../routes/stores/overlayStore';
     import { fade } from 'svelte/transition';
+	import { onMount } from 'svelte';
 
     export let data: PageData;
     export let form: ActionData;
@@ -13,6 +14,10 @@
     let isChecked = false;
     let manualDate = (new Date()).toJSON().slice(0, 10);
     let defaultDate: String; 
+
+    onMount(() => {
+        reloadBoolean.set(true)
+    })
 
     function handleClonk() {manualEntryBool = !manualEntryBool}
     function manualSetting() {isChecked = !isChecked}
@@ -75,9 +80,9 @@
     </div>
 	{/if}
 
-    <h2>Current Tasks</h2> 
+    <h2>Vos tâches acceptées</h2> 
     {#if data.currentTasks.length == 0}
-        <p>You currently have no tasks</p>
+        <p>Aucune tâche a été acceptée en ce moment.</p>
     {:else}
         <div in:fade={{duration:600}} class="tdlist">
             {#each data.currentTasks as curTsk}

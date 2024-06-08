@@ -14,10 +14,15 @@
 		<span class="close" aria-hidden="true" on:click|self={() => {startTaskModal.set(false)}}> &times; </span>
 		
 		<h1 class="leftTitle"> {currTask.chaletNom}</h1>	
-		
-		<button type="submit">Accept </button>
 		{#if currTask.taskId}
-			<button formaction="?/incompleteTask">Rejetez</button>
+			<div class="startTitle">Commencé: {currTask.startTime.split(', ').slice(1,2)}</div>
+		{:else}
+			<div class="startTitle">Commencer cette tâche?</div>
+		{/if}
+		
+		<button type="submit">Accepter </button>
+		{#if currTask.taskId}
+			<button formaction="?/incompleteTask">Rejeter</button>
 		{:else}
 			<button on:click={() => {startTaskModal.set(false)}}>Cancel</button>
 		{/if}
@@ -31,7 +36,10 @@
 	}
   	.leftTitle{
 		text-align: left;
-		margin-bottom: 20px;
+		margin-bottom: 10px;
+	}
+	.startTitle{
+		margin-bottom: 10px;
 	}
 	.outsideModal {
 		background: rgb(255 255 255 / 60%);
@@ -51,7 +59,7 @@
 		opacity: 95%;
 		justify-content: center;
 		width: 330px;
-		height: 265px;
+		height: 290px;
 		padding: 16px;
 		margin-top:25vh;
 		/* margin-bottom:10vh; */

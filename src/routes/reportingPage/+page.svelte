@@ -1,8 +1,7 @@
 <script lang="ts">
-    import type { ActionData, PageData } from "./$types";
+    import type { PageData } from "./$types";
 
 	export let data: PageData;
-	export let form: ActionData;
 
     let uiID = 0;
     let selectedUI: number;
