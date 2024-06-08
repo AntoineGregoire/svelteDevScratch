@@ -15,14 +15,12 @@
 		
 		<h1 class="leftTitle"> {currTask.chaletNom}</h1>	
 		
+		<button type="submit">Accept </button>
 		{#if currTask.taskId}
-			<p>Avez vous fini?</p>
 			<button formaction="?/incompleteTask">Rejetez</button>
 		{:else}
-        	<p>Acceptez ce chalet. </p>
 			<button on:click={() => {startTaskModal.set(false)}}>Cancel</button>
 		{/if}
-		<button type="submit">Accept </button>
 	</div>
 </div> 
 
@@ -33,6 +31,7 @@
 	}
   	.leftTitle{
 		text-align: left;
+		margin-bottom: 20px;
 	}
 	.outsideModal {
 		background: rgb(255 255 255 / 60%);
@@ -48,13 +47,19 @@
 	.insideModal {
 		background-color:rgb(228, 228, 228);
 		border-radius: 15px;
-		border-color: var(--color-theme-2);
+		border: 2px solid var(--color-theme-3);
 		opacity: 95%;
 		justify-content: center;
-		width: 30vw;
-		height: 60vh;
-		padding: 1rem;
-		margin-top:10vh;
-		margin-bottom:10vh;
+		width: 330px;
+		height: 265px;
+		padding: 16px;
+		margin-top:25vh;
+		/* margin-bottom:10vh; */
+	}
+	.insideModal button {
+		width: 295px;
+		height: 65px;
+		font-size: 20px;
+		border: 1.5px solid var(--color-theme-2);
 	}
 </style>

@@ -4,57 +4,58 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
+  provider  = "postgresql"
+  //url     = env("postgresql://lacdbUser:admin@localhost:5555/Augustindb?schema=public")
+  url       = env("postgresql://LacAugDB_owner:NXDIxYfZ0mv6@ep-plain-wind-a5q3b68e-pooler.us-east-2.aws.neon.tech/LacAugDB?sslmode=require")
   directUrl = env("DIRECT_URL")
 }
 
 model User {
-  id          Int     @id 
+  id          Int             @id
   name        String
   avatar      String?
-  loggedIn    Boolean @default(false)
-  password    String 
-  usrAuthTokn String @unique
-  tasks       Task[] 
+  loggedIn    Boolean         @default(false)
+  password    String
+  usrAuthTokn String          @unique
+  tasks       Task[]
   shifts      ShiftEntries[]
   messages    savedMessages[]
 }
 
 model ShiftEntries {
-  id          Int     @id @default(autoincrement())
-  userName    String
-  userId      Int
-  shiftStart  String
-  shiftEnd    String?
-  hoursWorkd  String?
-  user        User    @relation(fields: [userId], references: [id])
+  id         Int     @id @default(autoincrement())
+  userName   String
+  userId     Int
+  shiftStart String
+  shiftEnd   String?
+  hoursWorkd String?
+  user       User    @relation(fields: [userId], references: [id])
 }
 
 model Chalet {
-  chaletId      Int @id @default(autoincrement())
-  chaletNom     String 
-  cleanState    Boolean   @default(true)
-  workingOn     Boolean   @default(false)
-  tasks    Task[]
+  chaletId   Int     @id @default(autoincrement())
+  chaletNom  String
+  cleanState Boolean @default(true)
+  workingOn  Boolean @default(false)
+  tasks      Task[]
 }
 
 model Task {
-  taskId      Int      @id @default(autoincrement())
-  chaletNom   String?
-  cleanerId   Int?
-  chaletId    Int?
-  startTime   String?
-  endTime     String?
-  totalTime   String?
-  completed   Boolean  @default(false)
-  cleaner     User?    @relation(fields: [cleanerId], references: [id])
-  chalet      Chalet?  @relation(fields: [chaletId], references: [chaletId])
+  taskId    Int     @id @default(autoincrement())
+  chaletNom String?
+  cleanerId Int?
+  chaletId  Int?
+  startTime String?
+  endTime   String?
+  totalTime String?
+  completed Boolean @default(false)
+  cleaner   User?   @relation(fields: [cleanerId], references: [id])
+  chalet    Chalet? @relation(fields: [chaletId], references: [chaletId])
 }
 
 model savedMessages {
-  id          Int     @id @default(autoincrement())
-  message     String
-  userId      Int
-  user        User    @relation(fields: [userId], references: [id])
+  id      Int    @id @default(autoincrement())
+  message String
+  userId  Int
+  user    User   @relation(fields: [userId], references: [id])
 }

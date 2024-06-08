@@ -44,7 +44,7 @@
 		display: inline;
 		width: 125px;
 		max-width: 150px;
-		min-height: 80px;
+		height: 80px;
 		border-radius: 20px;
 		font-size: x-large;
 	}

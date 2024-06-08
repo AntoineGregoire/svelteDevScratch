@@ -46,6 +46,9 @@
   	.leftTitle{
 		text-align: left;
 	}
+	hr {
+		border-color: black;
+	}
 	.outsideModal {
 		background: rgb(255 255 255 / 60%);
 		display: flex;
@@ -60,6 +63,7 @@
 	.insideModal {
 		background-color:rgb(228, 228, 228);
 		border-radius: 15px;
+		border: 1.5px solid var(--color-theme-3);
 		opacity: 95%;
 		width: 480px;
 		padding: 1rem;

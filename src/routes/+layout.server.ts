@@ -1,7 +1,7 @@
 import type { PageServerLoad } from "./$types";
 
 const isAuthRoute = (url: URL) => {
-	const authRoutes = ['/p', '/create'];
+	const authRoutes = ['/p', '/create', '/admncurpage', '/reportingPage'];
 	// check if current URL includes any of the authRoutes
 	return authRoutes.some(route => url.pathname.includes(route));
 }

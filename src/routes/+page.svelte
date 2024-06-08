@@ -25,7 +25,7 @@
 </script>
 
 <div class="mainContain">
-	<h1 class="sideName"><u>Welcome, log in here</u></h1>
+	<h1 class="sideName"><u>Task Manager</u></h1>
 	<div in:fade={{duration:600}} class="primary">
 			{#each data.userlist as useritem}
 				<button on:click={() => {openModalFunc(useritem)}}>
@@ -52,6 +52,10 @@
 <style>
 	.mainContain {
 		min-height: 100vh;
+	}
+	.sideName {
+		text-align: left;
+		font-size: 40px;
 	}
 	img {width: 4vw; object-fit: contain;}
 	button {

@@ -27,6 +27,10 @@
     align-items: center;
   }
 
+  .text {
+    font-size:40px;
+  }
+
   .left { 
     display: inline;
   }

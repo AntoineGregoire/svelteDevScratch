@@ -19,7 +19,7 @@
 <div class="">
     <div class="flex">
        
-        <h2 class="notLikeUs">Votre Nom</h2>
+        <h3 class="notLikeUs">Votre Nom</h3>
         <select bind:value={uiID} on:change={() => setUI(uiID)} name="bpID" class="">
             <option disabled selected value=0>- Select -</option>
             {#each data.userlist as ui}
@@ -45,5 +45,6 @@
         margin-bottom: 0;
         margin-top: 0;
         padding-top: 0;
+        color: var(--color-theme-1);
     }
 </style>

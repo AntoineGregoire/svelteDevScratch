@@ -83,7 +83,7 @@ export const actions: Actions = {
     })
     if (currentTasks.length > 0) {
       return fail(400, {
-        message: "Please complete all tasks before logging out",
+        message: "Il faut compléter toutes vos tâches avant de check out",
         incomplete: true
       })
     }

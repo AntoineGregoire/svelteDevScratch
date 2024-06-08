@@ -1,8 +1,8 @@
 import { invalidate } from "$app/navigation"
 
 export function GET(req) {
-  if (req.headers.get('Authorization') === `Bearer ${process.env.CRON_SECRET}`) {
-    invalidate('calendar:load')
+  if (req) {
+    console.log(req)
 
     return new Response("Success!")
   } else {

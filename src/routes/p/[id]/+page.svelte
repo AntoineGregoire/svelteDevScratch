@@ -35,9 +35,6 @@
 
 <div class="mainContainer">
     <h1>Bonjour {data.userInfo?.name}</h1>
-    {#if form?.incomplete}
-			<h2 class="err">{form?.message}</h2>
-	{/if}
     {#if data.nullShifts[0].shifts.length > 1}
     <h2>{data.nullShifts[0].shifts}</h2>
         <h2 class="err">Warning: </h2>
@@ -68,10 +65,15 @@
             </form>
         {/if}
     {/if}    
-    <form method="POST" action="?/logOut">
+    <form class="bottomclass" method="POST" action="?/logOut">
         {#if data.userInfo} <input hidden bind:value={data.id} name="userId" type="number"> {/if}
         <button>Check Out</button>
     </form>
+    {#if form?.incomplete}
+    <div in:fade={{duration:600}} class="smolclass">
+        <h4 class="err">{form?.message}</h4>
+    </div>
+	{/if}
 
     <h2>Current Tasks</h2> 
     {#if data.currentTasks.length == 0}
@@ -129,6 +131,10 @@
     grid-template-columns: 5vw 20vw;
   }
 
+  .bottomclass{
+    margin-bottom: 0px;
+  }
+
   .topPadding{
     padding-top: 10px;
   }
@@ -137,6 +143,10 @@
     margin-bottom: 10px;
     margin-top: 0px;
     padding: 0px;
+  }
+  .smolclass{
+    padding-top: 0px;
+    margin-top: 0px;
   }
 
   /* .topbuttons{
