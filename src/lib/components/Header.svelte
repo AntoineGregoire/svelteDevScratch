@@ -9,7 +9,7 @@
 
 <nav>
     <div class="left">
-        <a href="/" on:dblclick={()=>{window.location.reload()}} on:click={() => {window.location.assign("localhost:5173/");}}> <img src={logo} alt="Camping Lac St-Augustin"/></a>
+        <a href="/" data-sveltekit-reload on:click={() => {window.location.assign("localhost:5173/");}}> <img src={logo} alt="Camping Lac St-Augustin"/></a>
         <!-- svelte-ignore a11y-missing-attribute --> 
         <a class="text" href="/">Lac St-Augustin</a>
       
