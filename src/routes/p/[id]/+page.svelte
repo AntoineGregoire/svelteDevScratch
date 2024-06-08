@@ -41,6 +41,11 @@
         <h2 class="err">Warning: </h2>
         <h2 class="err">It appears you forgot to log out on: {String(data.nullShifts[0].shifts[0].shiftStart).split(', ').slice(0,1)}. Please enter this manually.</h2>
     {/if}
+    {#if form?.incomplete}
+    <div in:fade={{duration:600}} class="smolclass">
+        <h4 class="err">{form?.message}</h4>
+    </div>
+	{/if}
 
     <h2>Vos tâches acceptées</h2> 
     {#if data.currentTasks.length == 0}
@@ -93,11 +98,7 @@
         {#if data.userInfo} <input hidden bind:value={data.id} name="userId" type="number"> {/if}
         <button>Check Out</button>
     </form>
-    {#if form?.incomplete}
-    <div in:fade={{duration:600}} class="smolclass">
-        <h4 class="err">{form?.message}</h4>
-    </div>
-	{/if}
+    
 
     {#if $startTaskModal}
         {#if newTaskBool}
@@ -140,6 +141,11 @@
     margin-top: 0px;
     padding-top: 0px;
   }
+  h4 {
+    font-size: 18px;
+    font-weight: 800;
+    font-family: var(--font-mono);
+  }
   .enterManualBtn {
     margin-top: 40px;
   }
@@ -165,8 +171,8 @@
     padding: 0px;
   }
   .smolclass{
-    padding-top: 0px;
-    margin-top: 0px;
+    padding: 0px;
+    margin: 0px;
   }
 
   /* .topbuttons{

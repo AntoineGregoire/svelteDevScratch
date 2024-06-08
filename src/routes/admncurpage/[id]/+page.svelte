@@ -84,3 +84,9 @@
         <button on:click={()=>{tableToCSV()}}>Download</button>
     </div>
 </div>
+
+<style>
+    th, td {
+        border: 1px solid;
+    }
+</style>

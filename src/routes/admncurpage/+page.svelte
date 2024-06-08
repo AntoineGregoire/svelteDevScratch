@@ -106,14 +106,14 @@
 <style>
     .tdlist {
       display: grid;
-      grid-template-columns: repeat(5, 15vw);
+      grid-template-columns: repeat(5, 16vw);
       align-items: center; 
       justify-content: center;
       gap: 4px;
   }
   .tdlist button {
-      width: 12vw;
-      height: 65px;
+      width: 14vw;
+      height: 70px;
   }
   h1 {
     font-size: 45px;
@@ -132,7 +132,7 @@
     margin-bottom: 0px;
   }
   .label{
-    margin-left: 100px;
+    margin-left: 80px;
     
   }
   .flex{
