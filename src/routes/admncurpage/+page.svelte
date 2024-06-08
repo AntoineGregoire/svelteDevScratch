@@ -27,7 +27,7 @@
 
 <div>
     <div>
-        <h2>Chalets Cleaned or Occupied</h2> 
+        <h2 class="label">Chalets Cleaned or Occupied</h2> 
         {#if data.cleanChalets.length == 0}
             <p>All Chalets are Currently Dirty</p>
         {:else}
@@ -42,7 +42,7 @@
         {/if}
     </div>
     <div>
-        <h2>Un-clean Chalets</h2> 
+        <h2 class="label">Un-clean Chalets</h2> 
         {#if data.dirtyChalets.length == 0}
             <p>All Chalets are Currently Clean</p>
         {:else}
@@ -95,8 +95,8 @@
     </div>
 
     <div>
-        <h2>Add new Employee to the Database</h2>
-        <button on:click={()=>{window.location.assign("/create")}}>New Employee</button>
+        <h2 class="label">Add new Employee to the Database</h2>
+        <button class="flex" on:click={()=>{window.location.assign("/create")}}>New Employee</button>
     </div>
     
     
@@ -115,10 +115,29 @@
       width: 12vw;
       height: 65px;
   }
+  h1 {
+    font-size: 45px;
+    margin-bottom: 30px;
+    
+  }
   h2{
-        margin-bottom: 20px;
+        margin-bottom: 15px;
+        font-family: var(--font-mono);
+        font-weight: 900;
+        font-size: 25px;
+        text-decoration: underline;
   }
   .formProduct{
     color: red;
+    margin-bottom: 0px;
+  }
+  .label{
+    margin-left: 100px;
+    
+  }
+  .flex{
+    width: 700px;
+    margin-left: 150px;
+    margin-right: 150px;
   }
 </style>

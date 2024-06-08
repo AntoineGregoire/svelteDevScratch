@@ -55,7 +55,7 @@
         </div>
     {/if}
     
-    <h2>Pick Up</h2>
+    <h2>Chalets sales</h2>
     <div in:fade={{duration:600}} class="tdlist">
       {#each data.displayChalets as displyChlt}
             <button on:click={() => {openStartModal(displyChlt)}}>
@@ -133,6 +133,7 @@
    h2 {
     font-family: var(--font-mono);
     font-weight: 1000;
+    font-size: 30px;
     text-decoration: underline;
   }
   h3 {
