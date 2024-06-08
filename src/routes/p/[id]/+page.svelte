@@ -64,7 +64,7 @@
       {/each}
     </div>
 
-    <button on:click={() => {handleClonk()}}>Enter Manually</button>
+    <button class="enterManualBtn" on:click={() => {handleClonk()}}>Enter Manually</button>
     {#if manualEntryBool}
         <div class="sameLine">
             <div> <button on:click={() => {manualSetting()}} class="checkMark">✓</button> </div>
@@ -125,7 +125,9 @@
   }
 
   h1 {
+    font-size: 45px;
     margin-bottom: 0px;
+    padding-bottom: 0px;
   }
 
    h2 {
@@ -133,7 +135,13 @@
     font-weight: 1000;
     text-decoration: underline;
   }
-  
+  h3 {
+    margin-top: 0px;
+    padding-top: 0px;
+  }
+  .enterManualBtn {
+    margin-top: 40px;
+  }
   .checkMark {
       width: 54px;
       height: 54px;

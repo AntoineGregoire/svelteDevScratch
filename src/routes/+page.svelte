@@ -4,7 +4,7 @@
 	import avatars from '../lib/images/avatar';
 	import type { ActionData, PageData } from "./$types";
 	import type { User } from '@prisma/client';
-	import { showLoginModal, showAdminModal, reloadBoolean } from './stores/overlayStore';
+	import { showLoginModal, showAdminModal } from './stores/overlayStore';
 	import { enhance } from '$app/forms';
 	import { fade } from 'svelte/transition';
 	import { onMount } from 'svelte';
