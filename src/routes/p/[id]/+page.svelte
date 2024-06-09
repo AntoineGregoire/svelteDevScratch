@@ -11,12 +11,10 @@
     let tempPointer: any;
     let newTaskBool = false;
     let manualEntryBool = false;
-    let isChecked = false;
-    let manualDate = (new Date()).toJSON().slice(0, 10);
+    let manualDate = (new Date(data.nullShifts[0].shifts[0].shiftStart)).toJSON().slice(0, 10);
     let defaultDate: String; 
 
     function handleClonk() {manualEntryBool = !manualEntryBool}
-    function manualSetting() {isChecked = !isChecked}
     function openStartModal(temp: any) {	
         startTaskModal.set(true)
         tempPointer = temp
@@ -35,17 +33,29 @@
 </script>
 
 <div class="mainContainer">
-    <h1>Bonjour {data.userInfo?.name}</h1>
-    <h3>Check In: {data.nullShifts[0].shifts[0].shiftStart.split(', ').slice(1,2)}</h3>
-    {#if data.nullShifts[0].shifts.length > 1}
-        <h2 class="err">Warning: </h2>
-        <h2 class="err">It appears you forgot to log out on: {String(data.nullShifts[0].shifts[0].shiftStart).split(', ').slice(0,1)}. Please enter this manually.</h2>
-    {/if}
+    <div>
+        <h1>Bonjour {data.userInfo?.name}</h1>
+        <h3>Check In: {data.nullShifts[0].shifts[0].shiftStart.split(', ').slice(1,2)}</h3>      
+    </div>
+
     {#if form?.incomplete}
     <div in:fade={{duration:600}} class="smolclass">
-        <h4 class="err">{form?.message}</h4>
+        <h4 class="err">Warning: {form?.message}</h4>
     </div>
 	{/if}
+    
+    {#if data.nullShifts[0].shifts.length > 1}
+    <div in:fade={{duration:600}} class="smolclass">
+        <h4 class="err">Warning: It appears you forgot to log out on: {data.nullShifts[0].shifts[0].shiftStart}. Please enter this manually.</h4>
+    </div>
+    <form method="POST" action="?/manualEntryHalf">
+        <input hidden value={data.id} name="userId" type="number">
+        <h2>Please enter your End Time</h2>
+        <input value={new Date(data.nullShifts[0].shifts[0].shiftStart)}  name="dateInput" type="datetime-local">
+        <button type="submit">Enter</button>
+    </form>
+    {/if}
+    
 
     <h2>Vos tâches acceptées</h2> 
     {#if data.currentTasks.length == 0}
@@ -61,38 +71,36 @@
     {/if}
     
     <h2>Chalets sales</h2>
-    <div in:fade={{duration:600}} class="tdlist">
-      {#each data.displayChalets as displyChlt}
-            <button on:click={() => {openStartModal(displyChlt)}}>
-                {displyChlt.chaletNom}
-            </button>
-      {/each}
-    </div>
+    {#if data.displayChalets.length == 0}
+        <p>Tous les chalets sont propres.</p>
+    {:else}
+        <div in:fade={{duration:600}} class="tdlist">
+        {#each data.displayChalets as displyChlt}
+                <button on:click={() => {openStartModal(displyChlt)}}>
+                    {displyChlt.chaletNom}
+                </button>
+        {/each}
+        </div>
+    {/if}
 
     <button class="enterManualBtn" on:click={() => {handleClonk()}}>Enter Manually</button>
     {#if manualEntryBool}
-        <div class="sameLine">
-            <div> <button on:click={() => {manualSetting()}} class="checkMark">✓</button> </div>
-            <div class="topPadding"> <p>Did you log in that day?</p></div>
-        </div> 
-        {#if !isChecked}
-            <form method="POST" action="?/manualEntryHalf">
-                <input hidden value={data.id} name="userId" type="number">
-                <h2>End Time</h2>
-                <input bind:value={manualDate} name="dateInput" type="datetime-local">
-                <button type="submit">Enter</button>
-            </form>
-        {:else if isChecked}
-            <form method="POST" action="?/manualEntryFull">
-                <input hidden value={data.id} name="userId" type="number">
-                <input hidden value={data.userInfo?.name} name="userName" type="string">
-                <h2>Start Time</h2>
-                <input bind:value={manualDate} on:change={()=>{dafaultDateSet()}} name="dateInput" type="datetime-local">
-                <h2>End Time</h2>
-                <input type="datetime-local" value={defaultDate} name="endTime">
-                <button type="submit">Enter</button>
-            </form>
-        {/if}
+        <form method="POST" action="?/manualEntryFull">
+            <input hidden value={data.id} name="userId" type="number">
+            <input hidden value={data.userInfo?.name} name="userName" type="string">
+            <div class="sameLine">
+                <div class="rightPadding">
+                    <h2>Start Time</h2>
+                    <input bind:value={manualDate} on:change={()=>{dafaultDateSet()}} name="dateInput" type="datetime-local">
+                </div>
+                <div>
+                    <h2>End Time</h2>
+                    <input type="datetime-local" value={defaultDate} name="endTime">
+                </div> 
+            </div>
+            
+            <button type="submit">Enter</button>
+        </form>
     {/if}    
     <form class="bottomclass" method="POST" action="?/logOut">
         {#if data.userInfo} <input hidden bind:value={data.id} name="userId" type="number"> {/if}
@@ -149,54 +157,40 @@
   .enterManualBtn {
     margin-top: 40px;
   }
-  .checkMark {
-      width: 54px;
-      height: 54px;
-  }
   .sameLine{
     display: grid;
-    grid-template-columns: 80px 300px;
+    grid-template-columns: 50vw 40vw;
   }
-
+  .rightPadding{
+    padding-right: 10vw;
+  }
   .bottomclass{
     margin-bottom: 0px;
   }
-
-  .topPadding{
-    padding-top: 15px;
-  }
   .err{
-    color: red;
-    margin-top: 0px;
-    padding: 0px;
+    color: white;
+    margin-left: 10px;
+    padding: 10px;
   }
   .smolclass{
+    background-color: rgb(222, 71, 71);
+    border-radius: 10px;
     padding: 0px;
     margin: 0px;
   }
-
-  /* .topbuttons{
-      display: grid;
-      justify-content: center;
-      grid-template-columns: repeat(2, 46vw);
-  }
-  .topbuttons button{
-      width: 300px;
-      height: 80px;
-  } */
   h2{
      margin-bottom: 15px;
       
   }
   .tdlist {
       display: grid;
-      grid-template-columns: repeat(5, 15vw);
+      grid-template-columns: repeat(5, 17vw);
       align-items: center; 
       justify-content: center;
       gap: 4px;
   }
   .tdlist button {
-      width: 12vw;
+      width: 14vw;
       height: 65px;
   }
 

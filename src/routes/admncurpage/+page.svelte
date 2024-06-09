@@ -131,7 +131,7 @@
     color: red;
     margin-bottom: 0px;
   }
-  .label{
+  .label,p{
     margin-left: 80px;
     
   }

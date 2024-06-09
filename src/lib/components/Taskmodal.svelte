@@ -40,6 +40,7 @@
 	}
 	.startTitle{
 		margin-bottom: 10px;
+		color: var(--color-theme-1);
 	}
 	.outsideModal {
 		background: rgb(255 255 255 / 60%);

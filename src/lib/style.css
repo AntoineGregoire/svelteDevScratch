@@ -11,6 +11,7 @@
 	--color-theme-1: rgba(29, 48, 75, 0.85);
 	--color-theme-2: #ff3e00;
 	--color-theme-3: rgba(8, 40, 75, 0.80);
+	--color-theme-4: rgba(222, 71, 71,0.9);
 	--color-text: rgba(0, 0, 0, 0.7);
 	font-size: 18px;
 	font-family: var(--font-body);
@@ -40,7 +41,7 @@ h1 {
 	font-size: 40px;
 	color: var(--color-theme-1);
 }
-h2,h3 {
+h2,h3,p {
 	color: var(--color-theme-1);
 }
 

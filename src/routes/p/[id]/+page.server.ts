@@ -25,6 +25,7 @@ export const load: PageServerLoad = (async ({params}: {params: {id: Number}}) =>
     select: { 
       shifts: {
         where: { shiftEnd: null },
+        orderBy: {  shiftStart: "asc"  }
     }}
   })
   return { displayChalets, userInfo, currentTasks, nullShifts, id: params.id};
@@ -161,9 +162,21 @@ export const actions: Actions = {
       select: { 
         shifts: {
           where: { shiftEnd: null },
+          orderBy: {  shiftStart: "asc"  }
       }}
     })
-    //Will cause ERROR if there is somehow more than one shift wihout an end time
+
+    const checkOne = endTime.split(', ').slice(0,1)
+    const checkTwo = shiftInfo[0].shifts[0].shiftStart.split(', ').slice(0,1) 
+
+
+    if (checkOne !== checkTwo ){
+      fail(400, {
+        message: "It appears the dates do not match, please enter again.",
+        incomplete: true
+      })
+    }
+
 
     const totalHours = ((new Date(endDate).getTime() - new Date(shiftInfo[0].shifts[0].shiftStart).getTime()) / 3600000).toFixed(2)
 
@@ -173,7 +186,8 @@ export const actions: Actions = {
       where: {id: Number(shiftInfo[0].shifts[0].id)},
       data: {
         shiftEnd: endDate,
-        hoursWorkd: totalHours
+        hoursWorkd: totalHours,
+        enteredManually: true
       }
     })
     

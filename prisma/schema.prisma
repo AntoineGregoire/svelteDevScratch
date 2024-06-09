@@ -29,6 +29,7 @@ model ShiftEntries {
   shiftStart  String
   shiftEnd    String?
   hoursWorkd  String?
+  enteredManually Boolean @default(false)
   user        User    @relation(fields: [userId], references: [id])
 }
 

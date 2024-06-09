@@ -62,7 +62,14 @@
 
 
 <div>
-    <h1>Hours worked for {data.shiftsUser[0].userName}</h1>
+    <div class="inlineTop">
+        <div>
+            <h1>Hours worked for {data.shiftsUser[0].userName}</h1>
+        </div>
+        <div>
+            <button data-sveltekit-reload on:click={() => {history.back()}}>Back</button>
+        </div>
+    </div>
     <div class="">
         <div class="">
                 <tr>
@@ -89,4 +96,13 @@
     th, td {
         border: 1px solid;
     }
+    .inlineTop{
+        display: grid;
+        grid-template-columns: 80vw 20vw;
+    }
+    .inlineTop button{
+        margin-top: 15px;
+        width: 100px;
+        height: 55px;
+     }
 </style>

@@ -9,9 +9,9 @@
 
 <nav>
     <div class="left">
-        <a href="/" data-sveltekit-reload on:click={() => {window.location.assign("localhost:5173/");}}> <img src={logo} alt="Camping Lac St-Augustin"/></a>
+        <a href="/" data-sveltekit-reload> <img src={logo} alt="Camping Lac St-Augustin"/></a>
         <!-- svelte-ignore a11y-missing-attribute --> 
-        <a class="text" href="/">Lac St-Augustin</a>
+        <a data-sveltekit-reload href="/"><h1 class="text">Lac St-Augustin </h1></a>
       
     </div>
     <div class="right">
@@ -28,15 +28,16 @@
   }
 
   .text {
-    font-size:40px;
+    color: var(--color-theme-1);
+    font-size:30px;
+    margin-top: 0px;
   }
 
   .left { 
     display: inline;
   }
 	.left img { 
-    width: 5em; 
-    /* height: 4em;  */
+    width: 6em; 
     object-fit: contain;
   }
   .left a {
@@ -52,6 +53,9 @@
 
   a + a {
     margin-left: 1rem;
+  }
+  .right{
+    padding: 0px;
   }
   .right a {
     border: 1px solid black;
