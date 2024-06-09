@@ -166,12 +166,18 @@ export const actions: Actions = {
       }}
     })
 
-    const checkOne = endTime.split(', ').slice(0,1)
+    const checkOne = endDate.split(', ').slice(0,1)
     const checkTwo = shiftInfo[0].shifts[0].shiftStart.split(', ').slice(0,1) 
 
+    console.log(checkOne)
+    console.log(checkTwo)
+    
 
-    if (checkOne !== checkTwo ){
-      fail(400, {
+
+    if (String(checkOne) == String(checkTwo)){
+      console.log("Correct Date.")
+    }else{
+      return fail(400, {
         message: "It appears the dates do not match, please enter again.",
         incomplete: true
       })

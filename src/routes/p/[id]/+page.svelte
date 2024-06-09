@@ -11,7 +11,7 @@
     let tempPointer: any;
     let newTaskBool = false;
     let manualEntryBool = false;
-    let manualDate = (new Date(data.nullShifts[0].shifts[0].shiftStart)).toJSON().slice(0, 10);
+    let manualDate = (new Date()).toJSON().slice(0, 10);
     let defaultDate: String; 
 
     function handleClonk() {manualEntryBool = !manualEntryBool}
@@ -40,7 +40,7 @@
 
     {#if form?.incomplete}
     <div in:fade={{duration:600}} class="smolclass">
-        <h4 class="err">Warning: {form?.message}</h4>
+        <h4 class="err">{form?.message}</h4>
     </div>
 	{/if}
     
