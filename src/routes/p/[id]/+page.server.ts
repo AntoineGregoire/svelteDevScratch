@@ -186,8 +186,7 @@ export const actions: Actions = {
       where: {id: Number(shiftInfo[0].shifts[0].id)},
       data: {
         shiftEnd: endDate,
-        hoursWorkd: totalHours,
-        enteredManually: true
+        hoursWorkd: totalHours
       }
     })
     

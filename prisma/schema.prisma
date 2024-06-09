@@ -5,7 +5,7 @@ generator client {
 
 datasource db {
   provider = "postgresql"
-  //url     = env("postgresql://lacdbUser:admin@localhost:5555/Augustindb?schema=public")
+  //url     = env("DATABASE_URL")
   url      = env("postgresql://LacAugDB_owner:NXDIxYfZ0mv6@ep-plain-wind-a5q3b68e-pooler.us-east-2.aws.neon.tech/LacAugDB?sslmode=require")
   directUrl = env("DIRECT_URL")
 }
