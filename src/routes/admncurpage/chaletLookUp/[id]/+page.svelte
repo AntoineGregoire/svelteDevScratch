@@ -61,14 +61,10 @@
 
 
 <div>
-    <div class="inlineTop">
-        <div>
-            <h1>Hours worked for {data.taskDisplay[0].chaletNom}</h1>
-        </div>
-        <div>
-            <button data-sveltekit-reload on:click={() => {history.back()}}>Back</button>
-        </div>
-    </div>
+    
+    <h1>Hours worked for {data.taskDisplay[0].chaletNom}</h1>
+       
+    <button class="inlineTop" on:click={() => {history.back()}}>Back</button>
     <div> 
         <div>
                 <tr>
@@ -95,13 +91,13 @@
     th, td {
         border: 1px solid;
     }
-    .inlineTop{
-        display: grid;
-        grid-template-columns: 80vw 20vw;
+    h1{
+        margin-bottom: 0px;
     }
-    .inlineTop button{
+    .inlineTop{
         margin-top: 15px;
         width: 100px;
         height: 55px;
-    }
+        margin-bottom: 40px;
+     }
 </style>
