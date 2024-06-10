@@ -4,7 +4,7 @@ import prisma from "$lib/prisma";
 
 
 // Schedule the cron job to run at midnight every day
-cron.schedule('37 15 * * *', async () => {
+cron.schedule('55 15 * * *', async () => {
   console.log('Running a task every day');
   await logOutUsers();
 });
@@ -14,7 +14,7 @@ async function logOutUsers() {
     // Update all users to set loggedIn to false
     await prisma.user.updateMany({
       data: {
-        loggedIn: true
+        loggedIn: false
       }
     });
     console.log('All users logged out');
