@@ -57,17 +57,14 @@
         temp_link.click();
         document.body.removeChild(temp_link);
     }
-    console.log(data.taskDisplay)
+    console.log(data.taskLen)
 </script>
 
 
 <div>
-    {#if data.taskDisplay}
-        <div>
-            <h1>{data.taskDisplay[0].chaletNom} Logs</h1>  
-            <button class="inlineTop" on:click={() => {history.back()}}>Back</button>
-        </div> 
-
+    {#if data.taskLen > 0}
+        <h1>{data.taskDisplay[0].chaletNom} Logs</h1>  
+        <button class="inlineTop" on:click={() => {history.back()}}>Back</button>
         <tr>
             <th>Date</th>
             <th>Start</th>
@@ -86,6 +83,7 @@
         
     <button on:click={()=>{tableToCSV()}}>Download</button>
     {:else}
+        <button class="inlineTop" on:click={() => {history.back()}}>Back</button>
         <h4>Sorry it appears there are no log for this chalet.</h4>
     {/if}
     
@@ -97,6 +95,10 @@
     }
     h1{
         margin-bottom: 0px;
+    }
+    h4{
+        font-family: var(--font-mono);
+        color: var(--color-theme-1);
     }
     .inlineTop{
         margin-top: 15px;

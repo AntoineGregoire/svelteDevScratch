@@ -4,8 +4,8 @@ import type { PageServerLoad } from "./$types";
 export const load: PageServerLoad = (async ({params}) => {
     const shiftsUser = await prisma.shiftEntries.findMany({
         where: { userId:  Number(params.id) },
-        orderBy: {shiftStart: "asc"}
+        //orderBy: {shiftStart: "desc"}
     })
-    
-    return { shiftsUser, id: params.id };
+    const shiftLen = shiftsUser.length
+    return { shiftsUser, shiftLen, id: params.id };
 });

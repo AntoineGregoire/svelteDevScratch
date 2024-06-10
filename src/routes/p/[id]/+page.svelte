@@ -51,7 +51,7 @@
     <form method="POST" action="?/manualEntryHalf">
         <input hidden value={data.id} name="userId" type="number">
         <h2>Please enter your End Time</h2>
-        <input value={new Date(data.nullShifts[0].shifts[0].shiftStart)}  name="dateInput" type="datetime-local">
+        <input bind:value={manualDate}  name="dateInput" type="datetime-local">
         <button type="submit">Enter</button>
     </form>
     {/if}

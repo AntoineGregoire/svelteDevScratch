@@ -62,30 +62,31 @@
 
 
 <div>
-
-    <h1>Hours worked for {data.shiftsUser[0].userName}</h1>
-        
+    {#if data.shiftLen > 0}
+    <h1>Hours worked for {data.shiftsUser[0].userName}</h1>  
     <button class="inlineTop" on:click={() => {history.back()}}>Back</button>
-    <div class="">
-        <div class="">
-                <tr>
-                  <th>Date</th>
-                  <th>Start</th>
-                  <th>End</th>
-                  <th>Hours</th>
-                </tr>
-            {#each data.shiftsUser as eachShift}
-                <tr>
-                    <td>{String(String(eachShift.shiftStart).split(', ').slice(0,1))}</td>
-                    <td>{String(eachShift.shiftStart).split(', ').slice(1,2)}</td>
-                    <td>{String(eachShift.shiftEnd).split(', ').slice(1,2)}</td>
-                    <td>{eachShift.hoursWorkd}</td>
-                </tr>
-            {/each} 
-            <br>
-        </div>
-        <button on:click={()=>{tableToCSV()}}>Download</button>
+    <div>
+        <tr>
+            <th>Date</th>
+            <th>Start</th>
+            <th>End</th>
+            <th>Hours</th>
+        </tr>
+        {#each data.shiftsUser as eachShift}
+            <tr>
+                <td>{String(String(eachShift.shiftStart).split(', ').slice(0,1))}</td>
+                <td>{String(eachShift.shiftStart).split(', ').slice(1,2)}</td>
+                <td>{String(eachShift.shiftEnd).split(', ').slice(1,2)}</td>
+                <td>{eachShift.hoursWorkd}</td>
+            </tr>
+        {/each} 
+        <br>
     </div>
+    <button on:click={()=>{tableToCSV()}}>Download</button>
+    {:else}
+        <button class="inlineTop" on:click={() => {history.back()}}>Back</button>
+        <h4>It appears there are no logs for this employee yet.</h4>
+    {/if}
 </div>
 
 <style>

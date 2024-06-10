@@ -8,7 +8,7 @@ import { fail, redirect } from '@sveltejs/kit';
 export const load: PageServerLoad = (async ({params}: {params: {id: Number}}) => {
   const displayChalets = await prisma.chalet.findMany({
     where: {  cleanState: false },
-    orderBy: {  chaletId: "asc",  }
+    orderBy: {  chaletId: "desc" }
   })
   const userInfo = await prisma.user.findUnique({
     where: { id: Number(params.id) },
@@ -25,7 +25,7 @@ export const load: PageServerLoad = (async ({params}: {params: {id: Number}}) =>
     select: { 
       shifts: {
         where: { shiftEnd: null },
-        orderBy: {  shiftStart: "asc"  }
+        //orderBy: {  shiftStart: "asc"  }
     }}
   })
   return { displayChalets, userInfo, currentTasks, nullShifts, id: params.id};
@@ -162,15 +162,16 @@ export const actions: Actions = {
       select: { 
         shifts: {
           where: { shiftEnd: null },
-          orderBy: {  shiftStart: "asc"  }
+          //orderBy: {  shiftStart: "asc"  }
       }}
     })
+
+
 
     const checkOne = endDate.split(', ').slice(0,1)
     const checkTwo = shiftInfo[0].shifts[0].shiftStart.split(', ').slice(0,1) 
 
-    console.log(checkOne)
-    console.log(checkTwo)
+    console.log(shiftInfo)
     
 
 
