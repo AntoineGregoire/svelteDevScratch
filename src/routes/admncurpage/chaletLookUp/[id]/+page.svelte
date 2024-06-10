@@ -57,37 +57,38 @@
         temp_link.click();
         document.body.removeChild(temp_link);
     }
+    console.log(data.taskDisplay)
 </script>
 
 
 <div>
-    <h1>{data.taskDisplay[0].chaletNom} Logs</h1>  
-    <button class="inlineTop" on:click={() => {history.back()}}>Back</button>
-    <div> 
-        <h1>{data.taskDisplay}</h1>
-        {#if data.taskDisplay.length > 0}
+    {#if data.taskDisplay}
         <div>
+            <h1>{data.taskDisplay[0].chaletNom} Logs</h1>  
+            <button class="inlineTop" on:click={() => {history.back()}}>Back</button>
+        </div> 
+
+        <tr>
+            <th>Date</th>
+            <th>Start</th>
+            <th>End</th>
+            <th>Hours</th>
+        </tr>
+        {#each data.taskDisplay as eachShift}
             <tr>
-                <th>Date</th>
-                <th>Start</th>
-                <th>End</th>
-                <th>Hours</th>
+                <td>{String(String(eachShift.startTime).split(', ').slice(0,1))}</td>
+                <td>{String(eachShift.startTime).split(', ').slice(1,2)}</td>
+                <td>{String(eachShift.endTime).split(', ').slice(1,2)}</td>
+                <td>{eachShift.totalTime}</td>
             </tr>
-            {#each data.taskDisplay as eachShift}
-                <tr>
-                    <td>{String(String(eachShift.startTime).split(', ').slice(0,1))}</td>
-                    <td>{String(eachShift.startTime).split(', ').slice(1,2)}</td>
-                    <td>{String(eachShift.endTime).split(', ').slice(1,2)}</td>
-                    <td>{eachShift.totalTime}</td>
-                </tr>
-            {/each} 
-            <br>
-        </div>
-        <button on:click={()=>{tableToCSV()}}>Download</button>
-        {:else}
-            <h4>Sorry it appears there are no log for this chalet.</h4>
-        {/if}
-    </div>
+        {/each} 
+        <br>
+        
+    <button on:click={()=>{tableToCSV()}}>Download</button>
+    {:else}
+        <h4>Sorry it appears there are no log for this chalet.</h4>
+    {/if}
+    
 </div>
 
 <style>
