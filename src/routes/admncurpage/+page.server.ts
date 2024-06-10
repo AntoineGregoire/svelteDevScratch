@@ -6,7 +6,7 @@ export const load: PageServerLoad = (async () => {
     const userlist = await prisma.user.findMany({
         where: {
             NOT: {
-                id: 530298164,
+                id: 130298564,
             },
         },
         orderBy: {

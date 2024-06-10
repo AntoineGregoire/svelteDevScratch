@@ -168,11 +168,6 @@
     margin-bottom: 0px;
   }
   .err{
-    color: white;
-    margin-left: 10px;
-    padding: 10px;
-  }
-  .error{
 		background-color: var(--color-theme-4);
 		margin-left: 10px;
     	padding: 10px;

@@ -4,7 +4,9 @@
   export let form: ActionData;
 </script>
 
+<button class="inlineTop" on:click={() => {history.back()}}>Back</button>
 <div class="center-content">
+
     {#if form?.success}
     	<h2> New member added!</h2>
     {:else}
@@ -53,6 +55,13 @@
 	h4{
 		font-family: var(--font-mono);
 	}
+	.inlineTop{
+		align-items:end ;
+        margin-top: 15px;
+        width: 100px;
+        height: 55px;
+		margin-bottom: 0px;
+     }
 	.inputType{
 		width: 530px;
 	}

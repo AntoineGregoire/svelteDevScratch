@@ -53,7 +53,7 @@
 
 <style>
 	.mainContain {
-		min-height: 100vh;
+		min-height: 80vh;
 	}
 	.sideName {
 		text-align: left;
