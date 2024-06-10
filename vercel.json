@@ -1,8 +1,10 @@
 {
-    "crons": [
-      {
-        "path": "/api/cron/*.js",
-        "schedule": "20 2 * * *"
-      }
-    ]
-  }
+  "buildCommand": "pnpm turbo build",
+  "ignoreCommand": "pnpm dlx turbo-ignore",
+  "crons": [
+    {
+      "path": "/api/cron/*.js",
+      "schedule": "25 2 * * *"
+    }
+  ]
+}
