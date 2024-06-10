@@ -172,9 +172,15 @@
     margin-left: 10px;
     padding: 10px;
   }
+  .error{
+		background-color: var(--color-theme-4);
+		margin-left: 10px;
+    	padding: 10px;
+		border-radius: 10px;
+    	color: white;
+    	width: 600px;
+  	}
   .smolclass{
-    background-color: rgb(222, 71, 71);
-    border-radius: 10px;
     padding: 0px;
     margin: 0px;
   }
