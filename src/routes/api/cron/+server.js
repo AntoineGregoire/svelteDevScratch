@@ -1,23 +1,13 @@
-import { Prisma } from '@prisma/client'
+import prisma from "$lib/prisma";
 
-
-export function GET(req) {
-  if (req) {
-    console.log(req)
-
-    Prisma.user.update({
-      where: {
-        id: true
-      },
-      data: {
-        loggedIn: false,
-      }
-    })
-    
-    return new Response("Success!")
-  } else {
-    return new Response('Not found', {
-      status: 404
-    })
-  }
+export async function GET(req) {
+  await prisma.user.update({
+    where: {
+      id: true
+    },
+    data: {
+      loggedIn: true,
+    }
+  })
+  return new Response("Success!")
 }
