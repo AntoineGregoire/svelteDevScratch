@@ -2,7 +2,7 @@
   "buildCommand": "pnpm build",
   "crons": [
     {
-      "path": "/api/cron/*.js",
+      "path": "/api/cron/logout.js",
       "schedule": "55 14 * * *"
     }
   ]
