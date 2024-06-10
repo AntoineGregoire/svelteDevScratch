@@ -1,4 +1,5 @@
 import type { Handle } from '@sveltejs/kit'
+import './lib/cron.js'
 
 export const handle: Handle = async ({ event, resolve }) => {
   // get cookies from browser
