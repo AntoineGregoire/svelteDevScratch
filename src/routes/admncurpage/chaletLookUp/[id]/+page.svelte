@@ -61,18 +61,18 @@
 
 
 <div>
-    
-    <h1>Hours worked for {data.taskDisplay[0].chaletNom}</h1>
-       
+    <h1>{data.taskDisplay[0].chaletNom} Logs</h1>  
     <button class="inlineTop" on:click={() => {history.back()}}>Back</button>
     <div> 
+        <h1>{data.taskDisplay}</h1>
+        {#if data.taskDisplay.length > 0}
         <div>
-                <tr>
-                  <th>Date</th>
-                  <th>Start</th>
-                  <th>End</th>
-                  <th>Hours</th>
-                </tr>
+            <tr>
+                <th>Date</th>
+                <th>Start</th>
+                <th>End</th>
+                <th>Hours</th>
+            </tr>
             {#each data.taskDisplay as eachShift}
                 <tr>
                     <td>{String(String(eachShift.startTime).split(', ').slice(0,1))}</td>
@@ -84,6 +84,9 @@
             <br>
         </div>
         <button on:click={()=>{tableToCSV()}}>Download</button>
+        {:else}
+            <h4>Sorry it appears there are no log for this chalet.</h4>
+        {/if}
     </div>
 </div>
 
