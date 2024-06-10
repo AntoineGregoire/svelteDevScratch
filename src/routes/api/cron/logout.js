@@ -4,7 +4,7 @@ export async function POST() {
   try {
     await prisma.user.updateMany({
       data: {
-        loggedIn: false
+        loggedIn: true
       }
     });
     return json({ message: 'All users logged out' });
