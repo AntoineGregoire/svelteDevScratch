@@ -3,7 +3,7 @@
   "crons": [
     {
       "path": "/src/routes/api/cron/logout",
-      "schedule": "02 16 * * *"
+      "schedule": "05 16 * * *"
     }
   ]
 }
