@@ -7,8 +7,8 @@ export async function POST() {
         loggedIn: false
       }
     });
-    return json({ message: 'All users logged out' });
+    return json({ message: 'Logging all users out' });
   } catch (error) {
-    return json({ error: 'Failed to log out users' }, { status: 500 });
+    return json({ error: 'Failed to log all users out' }, { status: 500 });
   }
 }
