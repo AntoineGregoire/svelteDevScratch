@@ -46,7 +46,7 @@
     
     {#if data.nullShifts[0].shifts.length > 1}
     <div in:fade={{duration:600}} class="smolclass">
-        <h4 class="err">Warning: It appears you forgot to log out on: {data.nullShifts[0].shifts[0].shiftStart}. Please enter this manually.</h4>
+        <h4 class="err">Warning: It appears you forgot to log out on: {data.nullShifts[0].shifts[1].shiftStart}. Please enter this manually.</h4>
     </div>
     <form method="POST" action="?/manualEntryHalf">
         <input hidden value={data.id} name="userId" type="number">

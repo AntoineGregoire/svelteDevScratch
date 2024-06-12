@@ -168,7 +168,7 @@ export const actions: Actions = {
     const userID = String(data.get("userId"))
     const endTime = new Date(String(data.get("dateInput")))
 
-    const endDate = (endTime.setHours(endTime.getHours() + 4)).toLocaleString()
+    const endDate = (endTime.setHours(endTime.getHours() + 4))
 
     console.log("End Time: "+endTime)
     console.log("End Date: "+endDate)
@@ -189,14 +189,14 @@ export const actions: Actions = {
 
     //console.log(shiftInfo)
     
-    if (String(checkOne) == String(checkTwo)){
-      console.log("Correct Date.")
-    }else{
-      return fail(400, {
-        message: "It appears the dates do not match, please enter again.",
-        incomplete: true
-      })
-    }
+    // if (String(checkOne) == String(checkTwo)){
+    //   console.log("Correct Date.")
+    // }else{
+    //   return fail(400, {
+    //     message: "It appears the dates do not match, please enter again.",
+    //     incomplete: true
+    //   })
+    // }
 
     const totalHours = ((new Date(endDate).getTime() - new Date(shiftInfo[0].shifts[0].shiftStart).getTime()) / 3600000).toFixed(2)
 
