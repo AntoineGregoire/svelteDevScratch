@@ -4,11 +4,10 @@ import prisma from "$lib/prisma";
 
 
 // Schedule the cron job to run at midnight every day
-cron.schedule('55 12 * * *', async () => {
+cron.schedule('59 12 * * *', async () => {
   console.log('Running a task every day');
   await logOutUsers();
-});
-
+}); 
 async function logOutUsers() {
   try {
     // Update all users to set loggedIn to false
@@ -27,4 +26,4 @@ async function logOutUsers() {
 }
 
 // Initialize the cron job
-logOutUsers();
+//logOutUsers();
