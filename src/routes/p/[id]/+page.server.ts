@@ -37,6 +37,7 @@ export const actions: Actions = {
     const data = await request.formData();
     const chaletID = String(data.get("chaletID"))
     const cleanerID = String(data.get("cleanerID"))
+    const cleanerName = String(data.get("cleanerName"))
 
     //console.log("Chalet ID: "+chaletID)
     //console.log("Cleaner ID: "+cleanerID)
@@ -50,6 +51,7 @@ export const actions: Actions = {
     await prisma.task.create({
       data: {
         chaletNom: thisChalet?.chaletNom,
+        cleanerName: cleanerName,
         cleanerId: Number(cleanerID),
         chaletId: Number(chaletID),
         startTime: new Date().toLocaleString('en', {timeZone: 'America/New_York'}),

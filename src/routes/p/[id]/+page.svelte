@@ -112,6 +112,7 @@
         {#if newTaskBool}
         <form method="POST" action="?/startTask">
             {#if data.userInfo}
+                <input hidden bind:value={data.userInfo.name} name="cleanerName" type="string">
                 <input hidden bind:value={data.userInfo.id} name="cleanerID" type="number">
             {/if}
             <input hidden bind:value={tempPointer.chaletId} name="chaletID" type="number">
