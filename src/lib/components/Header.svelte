@@ -12,7 +12,6 @@
         <a href="/" data-sveltekit-reload> <img src={logo} alt="Camping Lac St-Augustin"/></a>
         <!-- svelte-ignore a11y-missing-attribute --> 
         <a data-sveltekit-reload href="/"><h1 class="text">Lac St-Augustin</h1></a>
-      
     </div>
     <div class="right">
       <a href="/" on:click={()=>{openAdminFunc()}}>Admin</a>
@@ -34,7 +33,11 @@
   }
 
   .left { 
-    display: inline;
+    display: grid;
+    grid-template-columns: 7em 35vw;
+  }
+  .left h1 {
+    margin-top: 30px;
   }
 	.left img { 
     width: 7em; 
