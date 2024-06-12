@@ -193,7 +193,7 @@ export const actions: Actions = {
       data: {
         shiftEnd: endDate,
         hoursWorkd: totalHours,
-        enteredManually: true
+        //enteredManually: true
       }
     })
     
