@@ -2335,8 +2335,8 @@ export namespace Prisma {
     id: number | null
     userName: string | null
     userId: number | null
-    shiftStart: string | null
-    shiftEnd: string | null
+    shiftStart: Date | null
+    shiftEnd: Date | null
     hoursWorkd: string | null
     enteredManually: boolean | null
   }
@@ -2345,8 +2345,8 @@ export namespace Prisma {
     id: number | null
     userName: string | null
     userId: number | null
-    shiftStart: string | null
-    shiftEnd: string | null
+    shiftStart: Date | null
+    shiftEnd: Date | null
     hoursWorkd: string | null
     enteredManually: boolean | null
   }
@@ -2494,8 +2494,8 @@ export namespace Prisma {
     id: number
     userName: string
     userId: number
-    shiftStart: string
-    shiftEnd: string | null
+    shiftStart: Date
+    shiftEnd: Date | null
     hoursWorkd: string | null
     enteredManually: boolean
     _count: ShiftEntriesCountAggregateOutputType | null
@@ -2554,8 +2554,8 @@ export namespace Prisma {
       id: number
       userName: string
       userId: number
-      shiftStart: string
-      shiftEnd: string | null
+      shiftStart: Date
+      shiftEnd: Date | null
       hoursWorkd: string | null
       enteredManually: boolean
     }, ExtArgs["result"]["shiftEntries"]>
@@ -2956,8 +2956,8 @@ export namespace Prisma {
     readonly id: FieldRef<"ShiftEntries", 'Int'>
     readonly userName: FieldRef<"ShiftEntries", 'String'>
     readonly userId: FieldRef<"ShiftEntries", 'Int'>
-    readonly shiftStart: FieldRef<"ShiftEntries", 'String'>
-    readonly shiftEnd: FieldRef<"ShiftEntries", 'String'>
+    readonly shiftStart: FieldRef<"ShiftEntries", 'DateTime'>
+    readonly shiftEnd: FieldRef<"ShiftEntries", 'DateTime'>
     readonly hoursWorkd: FieldRef<"ShiftEntries", 'String'>
     readonly enteredManually: FieldRef<"ShiftEntries", 'Boolean'>
   }
@@ -4281,8 +4281,8 @@ export namespace Prisma {
     cleanerName: string | null
     cleanerId: number | null
     chaletId: number | null
-    startTime: string | null
-    endTime: string | null
+    startTime: Date | null
+    endTime: Date | null
     totalTime: string | null
     completed: boolean | null
   }
@@ -4293,8 +4293,8 @@ export namespace Prisma {
     cleanerName: string | null
     cleanerId: number | null
     chaletId: number | null
-    startTime: string | null
-    endTime: string | null
+    startTime: Date | null
+    endTime: Date | null
     totalTime: string | null
     completed: boolean | null
   }
@@ -4454,8 +4454,8 @@ export namespace Prisma {
     cleanerName: string | null
     cleanerId: number | null
     chaletId: number | null
-    startTime: string | null
-    endTime: string | null
+    startTime: Date
+    endTime: Date | null
     totalTime: string | null
     completed: boolean
     _count: TaskCountAggregateOutputType | null
@@ -4523,8 +4523,8 @@ export namespace Prisma {
       cleanerName: string | null
       cleanerId: number | null
       chaletId: number | null
-      startTime: string | null
-      endTime: string | null
+      startTime: Date
+      endTime: Date | null
       totalTime: string | null
       completed: boolean
     }, ExtArgs["result"]["task"]>
@@ -4929,8 +4929,8 @@ export namespace Prisma {
     readonly cleanerName: FieldRef<"Task", 'String'>
     readonly cleanerId: FieldRef<"Task", 'Int'>
     readonly chaletId: FieldRef<"Task", 'Int'>
-    readonly startTime: FieldRef<"Task", 'String'>
-    readonly endTime: FieldRef<"Task", 'String'>
+    readonly startTime: FieldRef<"Task", 'DateTime'>
+    readonly endTime: FieldRef<"Task", 'DateTime'>
     readonly totalTime: FieldRef<"Task", 'String'>
     readonly completed: FieldRef<"Task", 'Boolean'>
   }
@@ -6364,6 +6364,20 @@ export namespace Prisma {
 
 
   /**
+   * Reference to a field of type 'DateTime'
+   */
+  export type DateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime'>
+    
+
+
+  /**
+   * Reference to a field of type 'DateTime[]'
+   */
+  export type ListDateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime[]'>
+    
+
+
+  /**
    * Reference to a field of type 'Float'
    */
   export type FloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float'>
@@ -6455,8 +6469,8 @@ export namespace Prisma {
     id?: IntFilter<"ShiftEntries"> | number
     userName?: StringFilter<"ShiftEntries"> | string
     userId?: IntFilter<"ShiftEntries"> | number
-    shiftStart?: StringFilter<"ShiftEntries"> | string
-    shiftEnd?: StringNullableFilter<"ShiftEntries"> | string | null
+    shiftStart?: DateTimeFilter<"ShiftEntries"> | Date | string
+    shiftEnd?: DateTimeNullableFilter<"ShiftEntries"> | Date | string | null
     hoursWorkd?: StringNullableFilter<"ShiftEntries"> | string | null
     enteredManually?: BoolFilter<"ShiftEntries"> | boolean
     user?: XOR<UserRelationFilter, UserWhereInput>
@@ -6480,8 +6494,8 @@ export namespace Prisma {
     NOT?: ShiftEntriesWhereInput | ShiftEntriesWhereInput[]
     userName?: StringFilter<"ShiftEntries"> | string
     userId?: IntFilter<"ShiftEntries"> | number
-    shiftStart?: StringFilter<"ShiftEntries"> | string
-    shiftEnd?: StringNullableFilter<"ShiftEntries"> | string | null
+    shiftStart?: DateTimeFilter<"ShiftEntries"> | Date | string
+    shiftEnd?: DateTimeNullableFilter<"ShiftEntries"> | Date | string | null
     hoursWorkd?: StringNullableFilter<"ShiftEntries"> | string | null
     enteredManually?: BoolFilter<"ShiftEntries"> | boolean
     user?: XOR<UserRelationFilter, UserWhereInput>
@@ -6509,8 +6523,8 @@ export namespace Prisma {
     id?: IntWithAggregatesFilter<"ShiftEntries"> | number
     userName?: StringWithAggregatesFilter<"ShiftEntries"> | string
     userId?: IntWithAggregatesFilter<"ShiftEntries"> | number
-    shiftStart?: StringWithAggregatesFilter<"ShiftEntries"> | string
-    shiftEnd?: StringNullableWithAggregatesFilter<"ShiftEntries"> | string | null
+    shiftStart?: DateTimeWithAggregatesFilter<"ShiftEntries"> | Date | string
+    shiftEnd?: DateTimeNullableWithAggregatesFilter<"ShiftEntries"> | Date | string | null
     hoursWorkd?: StringNullableWithAggregatesFilter<"ShiftEntries"> | string | null
     enteredManually?: BoolWithAggregatesFilter<"ShiftEntries"> | boolean
   }
@@ -6576,8 +6590,8 @@ export namespace Prisma {
     cleanerName?: StringNullableFilter<"Task"> | string | null
     cleanerId?: IntNullableFilter<"Task"> | number | null
     chaletId?: IntNullableFilter<"Task"> | number | null
-    startTime?: StringNullableFilter<"Task"> | string | null
-    endTime?: StringNullableFilter<"Task"> | string | null
+    startTime?: DateTimeFilter<"Task"> | Date | string
+    endTime?: DateTimeNullableFilter<"Task"> | Date | string | null
     totalTime?: StringNullableFilter<"Task"> | string | null
     completed?: BoolFilter<"Task"> | boolean
     cleaner?: XOR<UserNullableRelationFilter, UserWhereInput> | null
@@ -6590,7 +6604,7 @@ export namespace Prisma {
     cleanerName?: SortOrderInput | SortOrder
     cleanerId?: SortOrderInput | SortOrder
     chaletId?: SortOrderInput | SortOrder
-    startTime?: SortOrderInput | SortOrder
+    startTime?: SortOrder
     endTime?: SortOrderInput | SortOrder
     totalTime?: SortOrderInput | SortOrder
     completed?: SortOrder
@@ -6607,8 +6621,8 @@ export namespace Prisma {
     cleanerName?: StringNullableFilter<"Task"> | string | null
     cleanerId?: IntNullableFilter<"Task"> | number | null
     chaletId?: IntNullableFilter<"Task"> | number | null
-    startTime?: StringNullableFilter<"Task"> | string | null
-    endTime?: StringNullableFilter<"Task"> | string | null
+    startTime?: DateTimeFilter<"Task"> | Date | string
+    endTime?: DateTimeNullableFilter<"Task"> | Date | string | null
     totalTime?: StringNullableFilter<"Task"> | string | null
     completed?: BoolFilter<"Task"> | boolean
     cleaner?: XOR<UserNullableRelationFilter, UserWhereInput> | null
@@ -6621,7 +6635,7 @@ export namespace Prisma {
     cleanerName?: SortOrderInput | SortOrder
     cleanerId?: SortOrderInput | SortOrder
     chaletId?: SortOrderInput | SortOrder
-    startTime?: SortOrderInput | SortOrder
+    startTime?: SortOrder
     endTime?: SortOrderInput | SortOrder
     totalTime?: SortOrderInput | SortOrder
     completed?: SortOrder
@@ -6641,8 +6655,8 @@ export namespace Prisma {
     cleanerName?: StringNullableWithAggregatesFilter<"Task"> | string | null
     cleanerId?: IntNullableWithAggregatesFilter<"Task"> | number | null
     chaletId?: IntNullableWithAggregatesFilter<"Task"> | number | null
-    startTime?: StringNullableWithAggregatesFilter<"Task"> | string | null
-    endTime?: StringNullableWithAggregatesFilter<"Task"> | string | null
+    startTime?: DateTimeWithAggregatesFilter<"Task"> | Date | string
+    endTime?: DateTimeNullableWithAggregatesFilter<"Task"> | Date | string | null
     totalTime?: StringNullableWithAggregatesFilter<"Task"> | string | null
     completed?: BoolWithAggregatesFilter<"Task"> | boolean
   }
@@ -6771,8 +6785,8 @@ export namespace Prisma {
 
   export type ShiftEntriesCreateInput = {
     userName: string
-    shiftStart: string
-    shiftEnd?: string | null
+    shiftStart: Date | string
+    shiftEnd?: Date | string | null
     hoursWorkd?: string | null
     enteredManually?: boolean
     user: UserCreateNestedOneWithoutShiftsInput
@@ -6782,16 +6796,16 @@ export namespace Prisma {
     id?: number
     userName: string
     userId: number
-    shiftStart: string
-    shiftEnd?: string | null
+    shiftStart: Date | string
+    shiftEnd?: Date | string | null
     hoursWorkd?: string | null
     enteredManually?: boolean
   }
 
   export type ShiftEntriesUpdateInput = {
     userName?: StringFieldUpdateOperationsInput | string
-    shiftStart?: StringFieldUpdateOperationsInput | string
-    shiftEnd?: NullableStringFieldUpdateOperationsInput | string | null
+    shiftStart?: DateTimeFieldUpdateOperationsInput | Date | string
+    shiftEnd?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     hoursWorkd?: NullableStringFieldUpdateOperationsInput | string | null
     enteredManually?: BoolFieldUpdateOperationsInput | boolean
     user?: UserUpdateOneRequiredWithoutShiftsNestedInput
@@ -6801,8 +6815,8 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     userName?: StringFieldUpdateOperationsInput | string
     userId?: IntFieldUpdateOperationsInput | number
-    shiftStart?: StringFieldUpdateOperationsInput | string
-    shiftEnd?: NullableStringFieldUpdateOperationsInput | string | null
+    shiftStart?: DateTimeFieldUpdateOperationsInput | Date | string
+    shiftEnd?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     hoursWorkd?: NullableStringFieldUpdateOperationsInput | string | null
     enteredManually?: BoolFieldUpdateOperationsInput | boolean
   }
@@ -6811,16 +6825,16 @@ export namespace Prisma {
     id?: number
     userName: string
     userId: number
-    shiftStart: string
-    shiftEnd?: string | null
+    shiftStart: Date | string
+    shiftEnd?: Date | string | null
     hoursWorkd?: string | null
     enteredManually?: boolean
   }
 
   export type ShiftEntriesUpdateManyMutationInput = {
     userName?: StringFieldUpdateOperationsInput | string
-    shiftStart?: StringFieldUpdateOperationsInput | string
-    shiftEnd?: NullableStringFieldUpdateOperationsInput | string | null
+    shiftStart?: DateTimeFieldUpdateOperationsInput | Date | string
+    shiftEnd?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     hoursWorkd?: NullableStringFieldUpdateOperationsInput | string | null
     enteredManually?: BoolFieldUpdateOperationsInput | boolean
   }
@@ -6829,8 +6843,8 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     userName?: StringFieldUpdateOperationsInput | string
     userId?: IntFieldUpdateOperationsInput | number
-    shiftStart?: StringFieldUpdateOperationsInput | string
-    shiftEnd?: NullableStringFieldUpdateOperationsInput | string | null
+    shiftStart?: DateTimeFieldUpdateOperationsInput | Date | string
+    shiftEnd?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     hoursWorkd?: NullableStringFieldUpdateOperationsInput | string | null
     enteredManually?: BoolFieldUpdateOperationsInput | boolean
   }
@@ -6888,8 +6902,8 @@ export namespace Prisma {
   export type TaskCreateInput = {
     chaletNom?: string | null
     cleanerName?: string | null
-    startTime?: string | null
-    endTime?: string | null
+    startTime?: Date | string
+    endTime?: Date | string | null
     totalTime?: string | null
     completed?: boolean
     cleaner?: UserCreateNestedOneWithoutTasksInput
@@ -6902,8 +6916,8 @@ export namespace Prisma {
     cleanerName?: string | null
     cleanerId?: number | null
     chaletId?: number | null
-    startTime?: string | null
-    endTime?: string | null
+    startTime?: Date | string
+    endTime?: Date | string | null
     totalTime?: string | null
     completed?: boolean
   }
@@ -6911,8 +6925,8 @@ export namespace Prisma {
   export type TaskUpdateInput = {
     chaletNom?: NullableStringFieldUpdateOperationsInput | string | null
     cleanerName?: NullableStringFieldUpdateOperationsInput | string | null
-    startTime?: NullableStringFieldUpdateOperationsInput | string | null
-    endTime?: NullableStringFieldUpdateOperationsInput | string | null
+    startTime?: DateTimeFieldUpdateOperationsInput | Date | string
+    endTime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     totalTime?: NullableStringFieldUpdateOperationsInput | string | null
     completed?: BoolFieldUpdateOperationsInput | boolean
     cleaner?: UserUpdateOneWithoutTasksNestedInput
@@ -6925,8 +6939,8 @@ export namespace Prisma {
     cleanerName?: NullableStringFieldUpdateOperationsInput | string | null
     cleanerId?: NullableIntFieldUpdateOperationsInput | number | null
     chaletId?: NullableIntFieldUpdateOperationsInput | number | null
-    startTime?: NullableStringFieldUpdateOperationsInput | string | null
-    endTime?: NullableStringFieldUpdateOperationsInput | string | null
+    startTime?: DateTimeFieldUpdateOperationsInput | Date | string
+    endTime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     totalTime?: NullableStringFieldUpdateOperationsInput | string | null
     completed?: BoolFieldUpdateOperationsInput | boolean
   }
@@ -6937,8 +6951,8 @@ export namespace Prisma {
     cleanerName?: string | null
     cleanerId?: number | null
     chaletId?: number | null
-    startTime?: string | null
-    endTime?: string | null
+    startTime?: Date | string
+    endTime?: Date | string | null
     totalTime?: string | null
     completed?: boolean
   }
@@ -6946,8 +6960,8 @@ export namespace Prisma {
   export type TaskUpdateManyMutationInput = {
     chaletNom?: NullableStringFieldUpdateOperationsInput | string | null
     cleanerName?: NullableStringFieldUpdateOperationsInput | string | null
-    startTime?: NullableStringFieldUpdateOperationsInput | string | null
-    endTime?: NullableStringFieldUpdateOperationsInput | string | null
+    startTime?: DateTimeFieldUpdateOperationsInput | Date | string
+    endTime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     totalTime?: NullableStringFieldUpdateOperationsInput | string | null
     completed?: BoolFieldUpdateOperationsInput | boolean
   }
@@ -6958,8 +6972,8 @@ export namespace Prisma {
     cleanerName?: NullableStringFieldUpdateOperationsInput | string | null
     cleanerId?: NullableIntFieldUpdateOperationsInput | number | null
     chaletId?: NullableIntFieldUpdateOperationsInput | number | null
-    startTime?: NullableStringFieldUpdateOperationsInput | string | null
-    endTime?: NullableStringFieldUpdateOperationsInput | string | null
+    startTime?: DateTimeFieldUpdateOperationsInput | Date | string
+    endTime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     totalTime?: NullableStringFieldUpdateOperationsInput | string | null
     completed?: BoolFieldUpdateOperationsInput | boolean
   }
@@ -7178,6 +7192,28 @@ export namespace Prisma {
     _max?: NestedBoolFilter<$PrismaModel>
   }
 
+  export type DateTimeFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeFilter<$PrismaModel> | Date | string
+  }
+
+  export type DateTimeNullableFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
+  }
+
   export type UserRelationFilter = {
     is?: UserWhereInput
     isNot?: UserWhereInput
@@ -7221,6 +7257,34 @@ export namespace Prisma {
   export type ShiftEntriesSumOrderByAggregateInput = {
     id?: SortOrder
     userId?: SortOrder
+  }
+
+  export type DateTimeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeWithAggregatesFilter<$PrismaModel> | Date | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedDateTimeFilter<$PrismaModel>
+    _max?: NestedDateTimeFilter<$PrismaModel>
+  }
+
+  export type DateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableWithAggregatesFilter<$PrismaModel> | Date | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedDateTimeNullableFilter<$PrismaModel>
+    _max?: NestedDateTimeNullableFilter<$PrismaModel>
   }
 
   export type ChaletCountOrderByAggregateInput = {
@@ -7517,6 +7581,14 @@ export namespace Prisma {
     connect?: UserWhereUniqueInput
   }
 
+  export type DateTimeFieldUpdateOperationsInput = {
+    set?: Date | string
+  }
+
+  export type NullableDateTimeFieldUpdateOperationsInput = {
+    set?: Date | string | null
+  }
+
   export type UserUpdateOneRequiredWithoutShiftsNestedInput = {
     create?: XOR<UserCreateWithoutShiftsInput, UserUncheckedCreateWithoutShiftsInput>
     connectOrCreate?: UserCreateOrConnectWithoutShiftsInput
@@ -7745,6 +7817,56 @@ export namespace Prisma {
     _max?: NestedBoolFilter<$PrismaModel>
   }
 
+  export type NestedDateTimeFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeFilter<$PrismaModel> | Date | string
+  }
+
+  export type NestedDateTimeNullableFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
+  }
+
+  export type NestedDateTimeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeWithAggregatesFilter<$PrismaModel> | Date | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedDateTimeFilter<$PrismaModel>
+    _max?: NestedDateTimeFilter<$PrismaModel>
+  }
+
+  export type NestedDateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableWithAggregatesFilter<$PrismaModel> | Date | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedDateTimeNullableFilter<$PrismaModel>
+    _max?: NestedDateTimeNullableFilter<$PrismaModel>
+  }
+
   export type NestedIntNullableWithAggregatesFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel> | null
     in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
@@ -7775,8 +7897,8 @@ export namespace Prisma {
   export type TaskCreateWithoutCleanerInput = {
     chaletNom?: string | null
     cleanerName?: string | null
-    startTime?: string | null
-    endTime?: string | null
+    startTime?: Date | string
+    endTime?: Date | string | null
     totalTime?: string | null
     completed?: boolean
     chalet?: ChaletCreateNestedOneWithoutTasksInput
@@ -7787,8 +7909,8 @@ export namespace Prisma {
     chaletNom?: string | null
     cleanerName?: string | null
     chaletId?: number | null
-    startTime?: string | null
-    endTime?: string | null
+    startTime?: Date | string
+    endTime?: Date | string | null
     totalTime?: string | null
     completed?: boolean
   }
@@ -7805,8 +7927,8 @@ export namespace Prisma {
 
   export type ShiftEntriesCreateWithoutUserInput = {
     userName: string
-    shiftStart: string
-    shiftEnd?: string | null
+    shiftStart: Date | string
+    shiftEnd?: Date | string | null
     hoursWorkd?: string | null
     enteredManually?: boolean
   }
@@ -7814,8 +7936,8 @@ export namespace Prisma {
   export type ShiftEntriesUncheckedCreateWithoutUserInput = {
     id?: number
     userName: string
-    shiftStart: string
-    shiftEnd?: string | null
+    shiftStart: Date | string
+    shiftEnd?: Date | string | null
     hoursWorkd?: string | null
     enteredManually?: boolean
   }
@@ -7874,8 +7996,8 @@ export namespace Prisma {
     cleanerName?: StringNullableFilter<"Task"> | string | null
     cleanerId?: IntNullableFilter<"Task"> | number | null
     chaletId?: IntNullableFilter<"Task"> | number | null
-    startTime?: StringNullableFilter<"Task"> | string | null
-    endTime?: StringNullableFilter<"Task"> | string | null
+    startTime?: DateTimeFilter<"Task"> | Date | string
+    endTime?: DateTimeNullableFilter<"Task"> | Date | string | null
     totalTime?: StringNullableFilter<"Task"> | string | null
     completed?: BoolFilter<"Task"> | boolean
   }
@@ -7903,8 +8025,8 @@ export namespace Prisma {
     id?: IntFilter<"ShiftEntries"> | number
     userName?: StringFilter<"ShiftEntries"> | string
     userId?: IntFilter<"ShiftEntries"> | number
-    shiftStart?: StringFilter<"ShiftEntries"> | string
-    shiftEnd?: StringNullableFilter<"ShiftEntries"> | string | null
+    shiftStart?: DateTimeFilter<"ShiftEntries"> | Date | string
+    shiftEnd?: DateTimeNullableFilter<"ShiftEntries"> | Date | string | null
     hoursWorkd?: StringNullableFilter<"ShiftEntries"> | string | null
     enteredManually?: BoolFilter<"ShiftEntries"> | boolean
   }
@@ -7997,8 +8119,8 @@ export namespace Prisma {
   export type TaskCreateWithoutChaletInput = {
     chaletNom?: string | null
     cleanerName?: string | null
-    startTime?: string | null
-    endTime?: string | null
+    startTime?: Date | string
+    endTime?: Date | string | null
     totalTime?: string | null
     completed?: boolean
     cleaner?: UserCreateNestedOneWithoutTasksInput
@@ -8009,8 +8131,8 @@ export namespace Prisma {
     chaletNom?: string | null
     cleanerName?: string | null
     cleanerId?: number | null
-    startTime?: string | null
-    endTime?: string | null
+    startTime?: Date | string
+    endTime?: Date | string | null
     totalTime?: string | null
     completed?: boolean
   }
@@ -8208,8 +8330,8 @@ export namespace Prisma {
     chaletNom?: string | null
     cleanerName?: string | null
     chaletId?: number | null
-    startTime?: string | null
-    endTime?: string | null
+    startTime?: Date | string
+    endTime?: Date | string | null
     totalTime?: string | null
     completed?: boolean
   }
@@ -8217,8 +8339,8 @@ export namespace Prisma {
   export type ShiftEntriesCreateManyUserInput = {
     id?: number
     userName: string
-    shiftStart: string
-    shiftEnd?: string | null
+    shiftStart: Date | string
+    shiftEnd?: Date | string | null
     hoursWorkd?: string | null
     enteredManually?: boolean
   }
@@ -8231,8 +8353,8 @@ export namespace Prisma {
   export type TaskUpdateWithoutCleanerInput = {
     chaletNom?: NullableStringFieldUpdateOperationsInput | string | null
     cleanerName?: NullableStringFieldUpdateOperationsInput | string | null
-    startTime?: NullableStringFieldUpdateOperationsInput | string | null
-    endTime?: NullableStringFieldUpdateOperationsInput | string | null
+    startTime?: DateTimeFieldUpdateOperationsInput | Date | string
+    endTime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     totalTime?: NullableStringFieldUpdateOperationsInput | string | null
     completed?: BoolFieldUpdateOperationsInput | boolean
     chalet?: ChaletUpdateOneWithoutTasksNestedInput
@@ -8243,8 +8365,8 @@ export namespace Prisma {
     chaletNom?: NullableStringFieldUpdateOperationsInput | string | null
     cleanerName?: NullableStringFieldUpdateOperationsInput | string | null
     chaletId?: NullableIntFieldUpdateOperationsInput | number | null
-    startTime?: NullableStringFieldUpdateOperationsInput | string | null
-    endTime?: NullableStringFieldUpdateOperationsInput | string | null
+    startTime?: DateTimeFieldUpdateOperationsInput | Date | string
+    endTime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     totalTime?: NullableStringFieldUpdateOperationsInput | string | null
     completed?: BoolFieldUpdateOperationsInput | boolean
   }
@@ -8254,16 +8376,16 @@ export namespace Prisma {
     chaletNom?: NullableStringFieldUpdateOperationsInput | string | null
     cleanerName?: NullableStringFieldUpdateOperationsInput | string | null
     chaletId?: NullableIntFieldUpdateOperationsInput | number | null
-    startTime?: NullableStringFieldUpdateOperationsInput | string | null
-    endTime?: NullableStringFieldUpdateOperationsInput | string | null
+    startTime?: DateTimeFieldUpdateOperationsInput | Date | string
+    endTime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     totalTime?: NullableStringFieldUpdateOperationsInput | string | null
     completed?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type ShiftEntriesUpdateWithoutUserInput = {
     userName?: StringFieldUpdateOperationsInput | string
-    shiftStart?: StringFieldUpdateOperationsInput | string
-    shiftEnd?: NullableStringFieldUpdateOperationsInput | string | null
+    shiftStart?: DateTimeFieldUpdateOperationsInput | Date | string
+    shiftEnd?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     hoursWorkd?: NullableStringFieldUpdateOperationsInput | string | null
     enteredManually?: BoolFieldUpdateOperationsInput | boolean
   }
@@ -8271,8 +8393,8 @@ export namespace Prisma {
   export type ShiftEntriesUncheckedUpdateWithoutUserInput = {
     id?: IntFieldUpdateOperationsInput | number
     userName?: StringFieldUpdateOperationsInput | string
-    shiftStart?: StringFieldUpdateOperationsInput | string
-    shiftEnd?: NullableStringFieldUpdateOperationsInput | string | null
+    shiftStart?: DateTimeFieldUpdateOperationsInput | Date | string
+    shiftEnd?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     hoursWorkd?: NullableStringFieldUpdateOperationsInput | string | null
     enteredManually?: BoolFieldUpdateOperationsInput | boolean
   }
@@ -8280,8 +8402,8 @@ export namespace Prisma {
   export type ShiftEntriesUncheckedUpdateManyWithoutUserInput = {
     id?: IntFieldUpdateOperationsInput | number
     userName?: StringFieldUpdateOperationsInput | string
-    shiftStart?: StringFieldUpdateOperationsInput | string
-    shiftEnd?: NullableStringFieldUpdateOperationsInput | string | null
+    shiftStart?: DateTimeFieldUpdateOperationsInput | Date | string
+    shiftEnd?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     hoursWorkd?: NullableStringFieldUpdateOperationsInput | string | null
     enteredManually?: BoolFieldUpdateOperationsInput | boolean
   }
@@ -8305,8 +8427,8 @@ export namespace Prisma {
     chaletNom?: string | null
     cleanerName?: string | null
     cleanerId?: number | null
-    startTime?: string | null
-    endTime?: string | null
+    startTime?: Date | string
+    endTime?: Date | string | null
     totalTime?: string | null
     completed?: boolean
   }
@@ -8314,8 +8436,8 @@ export namespace Prisma {
   export type TaskUpdateWithoutChaletInput = {
     chaletNom?: NullableStringFieldUpdateOperationsInput | string | null
     cleanerName?: NullableStringFieldUpdateOperationsInput | string | null
-    startTime?: NullableStringFieldUpdateOperationsInput | string | null
-    endTime?: NullableStringFieldUpdateOperationsInput | string | null
+    startTime?: DateTimeFieldUpdateOperationsInput | Date | string
+    endTime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     totalTime?: NullableStringFieldUpdateOperationsInput | string | null
     completed?: BoolFieldUpdateOperationsInput | boolean
     cleaner?: UserUpdateOneWithoutTasksNestedInput
@@ -8326,8 +8448,8 @@ export namespace Prisma {
     chaletNom?: NullableStringFieldUpdateOperationsInput | string | null
     cleanerName?: NullableStringFieldUpdateOperationsInput | string | null
     cleanerId?: NullableIntFieldUpdateOperationsInput | number | null
-    startTime?: NullableStringFieldUpdateOperationsInput | string | null
-    endTime?: NullableStringFieldUpdateOperationsInput | string | null
+    startTime?: DateTimeFieldUpdateOperationsInput | Date | string
+    endTime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     totalTime?: NullableStringFieldUpdateOperationsInput | string | null
     completed?: BoolFieldUpdateOperationsInput | boolean
   }
@@ -8337,8 +8459,8 @@ export namespace Prisma {
     chaletNom?: NullableStringFieldUpdateOperationsInput | string | null
     cleanerName?: NullableStringFieldUpdateOperationsInput | string | null
     cleanerId?: NullableIntFieldUpdateOperationsInput | number | null
-    startTime?: NullableStringFieldUpdateOperationsInput | string | null
-    endTime?: NullableStringFieldUpdateOperationsInput | string | null
+    startTime?: DateTimeFieldUpdateOperationsInput | Date | string
+    endTime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     totalTime?: NullableStringFieldUpdateOperationsInput | string | null
     completed?: BoolFieldUpdateOperationsInput | boolean
   }

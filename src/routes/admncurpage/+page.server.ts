@@ -39,7 +39,6 @@ export const actions: Actions = {
 
         throw redirect(303, "/admncurpage/"+userID)
     },
-
     selectChalet: async ({ request }) => {
         const data = await request.formData();
         const chaletID = data.get("chaletID")
@@ -50,7 +49,6 @@ export const actions: Actions = {
 
         throw redirect(303, "/admncurpage/chaletLookUp/"+chaletID)
     },
-
     needsClean: async ({ request }) => {
         const data = await request.formData();
         const chaletID = data.get("chaletID")

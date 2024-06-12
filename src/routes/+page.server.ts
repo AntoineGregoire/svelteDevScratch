@@ -44,15 +44,15 @@ export const actions: Actions = {
     });
 
     if (!getUSER?.loggedIn) {
-      const newEntry = await prisma.shiftEntries.create({
+      await prisma.shiftEntries.create({
         data: {
           userName: getUSER?.name,
           userId: numberID,
-          shiftStart: String(new Date().toLocaleString('en', {timeZone: 'America/New_York'})),
+          shiftStart: new Date(),
         },
       })
     }
-    const setUSR = await prisma.user.update({
+    await prisma.user.update({
       where: { id: numberID },
       data: { loggedIn: true },
     })
