@@ -51,7 +51,7 @@ export const actions: Actions = {
     await prisma.task.create({
       data: {
         chaletNom: thisChalet?.chaletNom,
-        cleanerName: cleanerName,
+        //cleanerName: cleanerName,
         cleanerId: Number(cleanerID),
         chaletId: Number(chaletID),
         startTime: new Date().toLocaleString('en', {timeZone: 'America/New_York'}),
