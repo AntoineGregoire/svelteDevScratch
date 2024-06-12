@@ -19,7 +19,6 @@
 		selectedCH = id;
 		console.log(selectedCH);
 	}
-
 </script>
 
 
@@ -61,7 +60,7 @@
         <h2>Chalets Logs</h2> 
     </div>
     <div class="flex">
-        {#if form?.fail }
+        {#if form?.fail}
             <p class="formProduct">Please select a chalet</p>
         {/if}
         <select bind:value={chID} on:change={() => setCH(chID)} name="chID" class="">
@@ -79,7 +78,7 @@
         <h2>Employee Shift Logs</h2>
     </div>
     <div class="flex">
-        {#if form?.missing }
+        {#if form?.missing}
             <p class="formProduct">Please select an employee</p>
         {/if}
         <select bind:value={uiID} on:change={() => setUI(uiID)} name="bpID" class="select select-bordered shadow-md w-9/12">
@@ -98,9 +97,6 @@
         <h2 class="label">Add new Employee to the Database</h2>
         <button class="flex" on:click={()=>{window.location.assign("/create")}}>New Employee</button>
     </div>
-    
-    
-    
 </div>
 
 <style>

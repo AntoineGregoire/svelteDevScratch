@@ -11,7 +11,7 @@
     <div class="left">
         <a href="/" data-sveltekit-reload> <img src={logo} alt="Camping Lac St-Augustin"/></a>
         <!-- svelte-ignore a11y-missing-attribute --> 
-        <a data-sveltekit-reload href="/"><h1 class="text">Lac St-Augustin (Home) </h1></a>
+        <a data-sveltekit-reload href="/"><h1 class="text">Lac St-Augustin</h1></a>
       
     </div>
     <div class="right">

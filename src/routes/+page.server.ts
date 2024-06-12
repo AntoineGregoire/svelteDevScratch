@@ -14,7 +14,7 @@ return { userlist };
 });
 
 export const actions: Actions = {
-  employeeLogin: async ({ request }) => {
+  employeeLogin: async ({ request, event }) => {
     const data = await request.formData();
     const pin = String(data.get("pin"))
     const IDofUser = String(data.get("identification"))
@@ -29,6 +29,8 @@ export const actions: Actions = {
         incorrect: true });
 		}
 
+    event.request.keepalive = true
+    
     const getUSER = await prisma.user.findUnique({
       where: { id: numberID},
       select: { name:true, password: true, loggedIn: true },
