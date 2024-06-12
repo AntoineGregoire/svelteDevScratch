@@ -14,7 +14,7 @@ return { userlist };
 });
 
 export const actions: Actions = {
-  employeeLogin: async ({ request, event }) => {
+  employeeLogin: async ({ request }) => {
     const data = await request.formData();
     const pin = String(data.get("pin"))
     const IDofUser = String(data.get("identification"))
@@ -28,8 +28,6 @@ export const actions: Actions = {
 				message: "Pin Length invalid",
         incorrect: true });
 		}
-
-    event.request.keepalive = true
     
     const getUSER = await prisma.user.findUnique({
       where: { id: numberID},
