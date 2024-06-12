@@ -4278,6 +4278,7 @@ export namespace Prisma {
   export type TaskMinAggregateOutputType = {
     taskId: number | null
     chaletNom: string | null
+    cleanerName: string | null
     cleanerId: number | null
     chaletId: number | null
     startTime: string | null
@@ -4289,6 +4290,7 @@ export namespace Prisma {
   export type TaskMaxAggregateOutputType = {
     taskId: number | null
     chaletNom: string | null
+    cleanerName: string | null
     cleanerId: number | null
     chaletId: number | null
     startTime: string | null
@@ -4300,6 +4302,7 @@ export namespace Prisma {
   export type TaskCountAggregateOutputType = {
     taskId: number
     chaletNom: number
+    cleanerName: number
     cleanerId: number
     chaletId: number
     startTime: number
@@ -4325,6 +4328,7 @@ export namespace Prisma {
   export type TaskMinAggregateInputType = {
     taskId?: true
     chaletNom?: true
+    cleanerName?: true
     cleanerId?: true
     chaletId?: true
     startTime?: true
@@ -4336,6 +4340,7 @@ export namespace Prisma {
   export type TaskMaxAggregateInputType = {
     taskId?: true
     chaletNom?: true
+    cleanerName?: true
     cleanerId?: true
     chaletId?: true
     startTime?: true
@@ -4347,6 +4352,7 @@ export namespace Prisma {
   export type TaskCountAggregateInputType = {
     taskId?: true
     chaletNom?: true
+    cleanerName?: true
     cleanerId?: true
     chaletId?: true
     startTime?: true
@@ -4445,6 +4451,7 @@ export namespace Prisma {
   export type TaskGroupByOutputType = {
     taskId: number
     chaletNom: string | null
+    cleanerName: string | null
     cleanerId: number | null
     chaletId: number | null
     startTime: string | null
@@ -4475,6 +4482,7 @@ export namespace Prisma {
   export type TaskSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     taskId?: boolean
     chaletNom?: boolean
+    cleanerName?: boolean
     cleanerId?: boolean
     chaletId?: boolean
     startTime?: boolean
@@ -4488,6 +4496,7 @@ export namespace Prisma {
   export type TaskSelectScalar = {
     taskId?: boolean
     chaletNom?: boolean
+    cleanerName?: boolean
     cleanerId?: boolean
     chaletId?: boolean
     startTime?: boolean
@@ -4511,6 +4520,7 @@ export namespace Prisma {
     scalars: $Extensions.GetPayloadResult<{
       taskId: number
       chaletNom: string | null
+      cleanerName: string | null
       cleanerId: number | null
       chaletId: number | null
       startTime: string | null
@@ -4916,6 +4926,7 @@ export namespace Prisma {
   interface TaskFieldRefs {
     readonly taskId: FieldRef<"Task", 'Int'>
     readonly chaletNom: FieldRef<"Task", 'String'>
+    readonly cleanerName: FieldRef<"Task", 'String'>
     readonly cleanerId: FieldRef<"Task", 'Int'>
     readonly chaletId: FieldRef<"Task", 'Int'>
     readonly startTime: FieldRef<"Task", 'String'>
@@ -6267,6 +6278,7 @@ export namespace Prisma {
   export const TaskScalarFieldEnum: {
     taskId: 'taskId',
     chaletNom: 'chaletNom',
+    cleanerName: 'cleanerName',
     cleanerId: 'cleanerId',
     chaletId: 'chaletId',
     startTime: 'startTime',
@@ -6561,6 +6573,7 @@ export namespace Prisma {
     NOT?: TaskWhereInput | TaskWhereInput[]
     taskId?: IntFilter<"Task"> | number
     chaletNom?: StringNullableFilter<"Task"> | string | null
+    cleanerName?: StringNullableFilter<"Task"> | string | null
     cleanerId?: IntNullableFilter<"Task"> | number | null
     chaletId?: IntNullableFilter<"Task"> | number | null
     startTime?: StringNullableFilter<"Task"> | string | null
@@ -6574,6 +6587,7 @@ export namespace Prisma {
   export type TaskOrderByWithRelationInput = {
     taskId?: SortOrder
     chaletNom?: SortOrderInput | SortOrder
+    cleanerName?: SortOrderInput | SortOrder
     cleanerId?: SortOrderInput | SortOrder
     chaletId?: SortOrderInput | SortOrder
     startTime?: SortOrderInput | SortOrder
@@ -6590,6 +6604,7 @@ export namespace Prisma {
     OR?: TaskWhereInput[]
     NOT?: TaskWhereInput | TaskWhereInput[]
     chaletNom?: StringNullableFilter<"Task"> | string | null
+    cleanerName?: StringNullableFilter<"Task"> | string | null
     cleanerId?: IntNullableFilter<"Task"> | number | null
     chaletId?: IntNullableFilter<"Task"> | number | null
     startTime?: StringNullableFilter<"Task"> | string | null
@@ -6603,6 +6618,7 @@ export namespace Prisma {
   export type TaskOrderByWithAggregationInput = {
     taskId?: SortOrder
     chaletNom?: SortOrderInput | SortOrder
+    cleanerName?: SortOrderInput | SortOrder
     cleanerId?: SortOrderInput | SortOrder
     chaletId?: SortOrderInput | SortOrder
     startTime?: SortOrderInput | SortOrder
@@ -6622,6 +6638,7 @@ export namespace Prisma {
     NOT?: TaskScalarWhereWithAggregatesInput | TaskScalarWhereWithAggregatesInput[]
     taskId?: IntWithAggregatesFilter<"Task"> | number
     chaletNom?: StringNullableWithAggregatesFilter<"Task"> | string | null
+    cleanerName?: StringNullableWithAggregatesFilter<"Task"> | string | null
     cleanerId?: IntNullableWithAggregatesFilter<"Task"> | number | null
     chaletId?: IntNullableWithAggregatesFilter<"Task"> | number | null
     startTime?: StringNullableWithAggregatesFilter<"Task"> | string | null
@@ -6870,6 +6887,7 @@ export namespace Prisma {
 
   export type TaskCreateInput = {
     chaletNom?: string | null
+    cleanerName?: string | null
     startTime?: string | null
     endTime?: string | null
     totalTime?: string | null
@@ -6881,6 +6899,7 @@ export namespace Prisma {
   export type TaskUncheckedCreateInput = {
     taskId?: number
     chaletNom?: string | null
+    cleanerName?: string | null
     cleanerId?: number | null
     chaletId?: number | null
     startTime?: string | null
@@ -6891,6 +6910,7 @@ export namespace Prisma {
 
   export type TaskUpdateInput = {
     chaletNom?: NullableStringFieldUpdateOperationsInput | string | null
+    cleanerName?: NullableStringFieldUpdateOperationsInput | string | null
     startTime?: NullableStringFieldUpdateOperationsInput | string | null
     endTime?: NullableStringFieldUpdateOperationsInput | string | null
     totalTime?: NullableStringFieldUpdateOperationsInput | string | null
@@ -6902,6 +6922,7 @@ export namespace Prisma {
   export type TaskUncheckedUpdateInput = {
     taskId?: IntFieldUpdateOperationsInput | number
     chaletNom?: NullableStringFieldUpdateOperationsInput | string | null
+    cleanerName?: NullableStringFieldUpdateOperationsInput | string | null
     cleanerId?: NullableIntFieldUpdateOperationsInput | number | null
     chaletId?: NullableIntFieldUpdateOperationsInput | number | null
     startTime?: NullableStringFieldUpdateOperationsInput | string | null
@@ -6913,6 +6934,7 @@ export namespace Prisma {
   export type TaskCreateManyInput = {
     taskId?: number
     chaletNom?: string | null
+    cleanerName?: string | null
     cleanerId?: number | null
     chaletId?: number | null
     startTime?: string | null
@@ -6923,6 +6945,7 @@ export namespace Prisma {
 
   export type TaskUpdateManyMutationInput = {
     chaletNom?: NullableStringFieldUpdateOperationsInput | string | null
+    cleanerName?: NullableStringFieldUpdateOperationsInput | string | null
     startTime?: NullableStringFieldUpdateOperationsInput | string | null
     endTime?: NullableStringFieldUpdateOperationsInput | string | null
     totalTime?: NullableStringFieldUpdateOperationsInput | string | null
@@ -6932,6 +6955,7 @@ export namespace Prisma {
   export type TaskUncheckedUpdateManyInput = {
     taskId?: IntFieldUpdateOperationsInput | number
     chaletNom?: NullableStringFieldUpdateOperationsInput | string | null
+    cleanerName?: NullableStringFieldUpdateOperationsInput | string | null
     cleanerId?: NullableIntFieldUpdateOperationsInput | number | null
     chaletId?: NullableIntFieldUpdateOperationsInput | number | null
     startTime?: NullableStringFieldUpdateOperationsInput | string | null
@@ -7252,6 +7276,7 @@ export namespace Prisma {
   export type TaskCountOrderByAggregateInput = {
     taskId?: SortOrder
     chaletNom?: SortOrder
+    cleanerName?: SortOrder
     cleanerId?: SortOrder
     chaletId?: SortOrder
     startTime?: SortOrder
@@ -7269,6 +7294,7 @@ export namespace Prisma {
   export type TaskMaxOrderByAggregateInput = {
     taskId?: SortOrder
     chaletNom?: SortOrder
+    cleanerName?: SortOrder
     cleanerId?: SortOrder
     chaletId?: SortOrder
     startTime?: SortOrder
@@ -7280,6 +7306,7 @@ export namespace Prisma {
   export type TaskMinOrderByAggregateInput = {
     taskId?: SortOrder
     chaletNom?: SortOrder
+    cleanerName?: SortOrder
     cleanerId?: SortOrder
     chaletId?: SortOrder
     startTime?: SortOrder
@@ -7747,6 +7774,7 @@ export namespace Prisma {
 
   export type TaskCreateWithoutCleanerInput = {
     chaletNom?: string | null
+    cleanerName?: string | null
     startTime?: string | null
     endTime?: string | null
     totalTime?: string | null
@@ -7757,6 +7785,7 @@ export namespace Prisma {
   export type TaskUncheckedCreateWithoutCleanerInput = {
     taskId?: number
     chaletNom?: string | null
+    cleanerName?: string | null
     chaletId?: number | null
     startTime?: string | null
     endTime?: string | null
@@ -7842,6 +7871,7 @@ export namespace Prisma {
     NOT?: TaskScalarWhereInput | TaskScalarWhereInput[]
     taskId?: IntFilter<"Task"> | number
     chaletNom?: StringNullableFilter<"Task"> | string | null
+    cleanerName?: StringNullableFilter<"Task"> | string | null
     cleanerId?: IntNullableFilter<"Task"> | number | null
     chaletId?: IntNullableFilter<"Task"> | number | null
     startTime?: StringNullableFilter<"Task"> | string | null
@@ -7966,6 +7996,7 @@ export namespace Prisma {
 
   export type TaskCreateWithoutChaletInput = {
     chaletNom?: string | null
+    cleanerName?: string | null
     startTime?: string | null
     endTime?: string | null
     totalTime?: string | null
@@ -7976,6 +8007,7 @@ export namespace Prisma {
   export type TaskUncheckedCreateWithoutChaletInput = {
     taskId?: number
     chaletNom?: string | null
+    cleanerName?: string | null
     cleanerId?: number | null
     startTime?: string | null
     endTime?: string | null
@@ -8174,6 +8206,7 @@ export namespace Prisma {
   export type TaskCreateManyCleanerInput = {
     taskId?: number
     chaletNom?: string | null
+    cleanerName?: string | null
     chaletId?: number | null
     startTime?: string | null
     endTime?: string | null
@@ -8197,6 +8230,7 @@ export namespace Prisma {
 
   export type TaskUpdateWithoutCleanerInput = {
     chaletNom?: NullableStringFieldUpdateOperationsInput | string | null
+    cleanerName?: NullableStringFieldUpdateOperationsInput | string | null
     startTime?: NullableStringFieldUpdateOperationsInput | string | null
     endTime?: NullableStringFieldUpdateOperationsInput | string | null
     totalTime?: NullableStringFieldUpdateOperationsInput | string | null
@@ -8207,6 +8241,7 @@ export namespace Prisma {
   export type TaskUncheckedUpdateWithoutCleanerInput = {
     taskId?: IntFieldUpdateOperationsInput | number
     chaletNom?: NullableStringFieldUpdateOperationsInput | string | null
+    cleanerName?: NullableStringFieldUpdateOperationsInput | string | null
     chaletId?: NullableIntFieldUpdateOperationsInput | number | null
     startTime?: NullableStringFieldUpdateOperationsInput | string | null
     endTime?: NullableStringFieldUpdateOperationsInput | string | null
@@ -8217,6 +8252,7 @@ export namespace Prisma {
   export type TaskUncheckedUpdateManyWithoutCleanerInput = {
     taskId?: IntFieldUpdateOperationsInput | number
     chaletNom?: NullableStringFieldUpdateOperationsInput | string | null
+    cleanerName?: NullableStringFieldUpdateOperationsInput | string | null
     chaletId?: NullableIntFieldUpdateOperationsInput | number | null
     startTime?: NullableStringFieldUpdateOperationsInput | string | null
     endTime?: NullableStringFieldUpdateOperationsInput | string | null
@@ -8267,6 +8303,7 @@ export namespace Prisma {
   export type TaskCreateManyChaletInput = {
     taskId?: number
     chaletNom?: string | null
+    cleanerName?: string | null
     cleanerId?: number | null
     startTime?: string | null
     endTime?: string | null
@@ -8276,6 +8313,7 @@ export namespace Prisma {
 
   export type TaskUpdateWithoutChaletInput = {
     chaletNom?: NullableStringFieldUpdateOperationsInput | string | null
+    cleanerName?: NullableStringFieldUpdateOperationsInput | string | null
     startTime?: NullableStringFieldUpdateOperationsInput | string | null
     endTime?: NullableStringFieldUpdateOperationsInput | string | null
     totalTime?: NullableStringFieldUpdateOperationsInput | string | null
@@ -8286,6 +8324,7 @@ export namespace Prisma {
   export type TaskUncheckedUpdateWithoutChaletInput = {
     taskId?: IntFieldUpdateOperationsInput | number
     chaletNom?: NullableStringFieldUpdateOperationsInput | string | null
+    cleanerName?: NullableStringFieldUpdateOperationsInput | string | null
     cleanerId?: NullableIntFieldUpdateOperationsInput | number | null
     startTime?: NullableStringFieldUpdateOperationsInput | string | null
     endTime?: NullableStringFieldUpdateOperationsInput | string | null
@@ -8296,6 +8335,7 @@ export namespace Prisma {
   export type TaskUncheckedUpdateManyWithoutChaletInput = {
     taskId?: IntFieldUpdateOperationsInput | number
     chaletNom?: NullableStringFieldUpdateOperationsInput | string | null
+    cleanerName?: NullableStringFieldUpdateOperationsInput | string | null
     cleanerId?: NullableIntFieldUpdateOperationsInput | number | null
     startTime?: NullableStringFieldUpdateOperationsInput | string | null
     endTime?: NullableStringFieldUpdateOperationsInput | string | null

@@ -171,10 +171,8 @@ export const actions: Actions = {
     const checkOne = endDate.split(', ').slice(0,1)
     const checkTwo = shiftInfo[0].shifts[0].shiftStart.split(', ').slice(0,1) 
 
-    console.log(shiftInfo)
+    //console.log(shiftInfo)
     
-
-
     if (String(checkOne) == String(checkTwo)){
       console.log("Correct Date.")
     }else{
@@ -183,7 +181,6 @@ export const actions: Actions = {
         incomplete: true
       })
     }
-
 
     const totalHours = ((new Date(endDate).getTime() - new Date(shiftInfo[0].shifts[0].shiftStart).getTime()) / 3600000).toFixed(2)
 

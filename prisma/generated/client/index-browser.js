@@ -136,6 +136,7 @@ exports.Prisma.ChaletScalarFieldEnum = {
 exports.Prisma.TaskScalarFieldEnum = {
   taskId: 'taskId',
   chaletNom: 'chaletNom',
+  cleanerName: 'cleanerName',
   cleanerId: 'cleanerId',
   chaletId: 'chaletId',
   startTime: 'startTime',
