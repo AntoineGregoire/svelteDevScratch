@@ -90,6 +90,19 @@ export const actions: Actions = {
         incomplete: true
       })
     }
+    const nullShifts = await prisma.user.findMany({
+      where: { id: Number(userID)},
+      select: { 
+        shifts: {
+          where: { shiftEnd: null },
+      }}
+    })
+    if (nullShifts.length > 1) {
+      return fail(400, {
+        message: "Il semble que vous avez plus d'un shift non terminé, il faut completez ca avant.",
+        incomplete: true
+      })
+    }
     //Will cause ERROR if there is somehow more than one shift wihout an end time
     console.log("Shift Start: "+shiftInfo[0].shifts[0].shiftStart)
 
@@ -101,7 +114,7 @@ export const actions: Actions = {
       where: {id: shiftInfo[0].shifts[0].id},
       data: {
         shiftEnd:  nowTime,
-        hoursWorkd: hoursToFixed
+        hoursWorkd: hoursToFixed,
       }
     })
     console.log("Hours worked: "+ hoursToFixed)
@@ -153,11 +166,12 @@ export const actions: Actions = {
   manualEntryHalf: async ({ request }) => {
     const data = await request.formData();
     const userID = String(data.get("userId"))
-    const endTime = String(data.get("dateInput"))
+    const endTime = new Date(String(data.get("dateInput")))
 
-    const endDate = new Date(endTime).toLocaleString('en', {timeZone: 'America/New_York'})
+    const endDate = (endTime.setHours(endTime.getHours() + 4)).toLocaleString()
 
     console.log("End Time: "+endTime)
+    console.log("End Date: "+endDate)
 
     const shiftInfo = await prisma.user.findMany({
       where: { id: Number(userID)},
